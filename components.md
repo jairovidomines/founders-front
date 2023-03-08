@@ -6,7 +6,7 @@
   - ID
   - Name
   - Website url
-  - Maker
+  - Active users
   - Pricing
   - Platforms
   - Twitter account
@@ -65,7 +65,7 @@
 
   - Shows an input for the Project's name with label "Name"
   - Shows an input for the Project's website with label "Website"
-  - Shows an input for the Project's maker with label "Maker"
+  - Shows an input for the Project's active mohlty users with label "Active users"
   - Shows an input for the Project's twitter account with label "Twitter"
   - Shows an input for the Project's pricing with label "Pricing"
   - Shows an input for the Project's platforms with label "Platforms"
@@ -78,7 +78,7 @@
 - Receives the update Project action
   - Shows an input for the Project's name with label "Name"
   - Shows an input for the Project's website with label "Website"
-  - Shows an input for the Project's maker with label "Maker"
+  - Shows an input for the Project's active monthly users with label "Active users"
   - Shows an input for the Project's twitter account with label "Twitter"
   - Shows an input for the Project's pricing with label "Pricing"
   - Shows an input for the Project's platforms with label "Platforms"
