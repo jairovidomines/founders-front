@@ -8,6 +8,8 @@ const GlobalStyles = createGlobalStyle`
   --main-color-button: #3f5e46;
   --main-color-button-disabled: 57%;
   --main-font: "Inter", sans-serif;
+  --main-font-color: #000;
+  --main-font-color-button: #fff;
 }
 
 *, 
@@ -45,6 +47,7 @@ button {
   border-radius: 5px;
   font-size: 18px;
   background-color: var(--main-color-button);
+  color: var(--main-font-color-button);
 }
 
 .container {
