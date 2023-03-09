@@ -27,7 +27,13 @@ body {
   font-weight: 300;
   width: 100%;
   min-height: 100vh;
-  color: #fff;
+  color: var(--main-font-color);
+}
+
+.container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 input {
@@ -42,6 +48,7 @@ h1 {
   font-weight: 700;
 }
 
+
 button {
   border: none;
   border-radius: 5px;
@@ -50,11 +57,6 @@ button {
   color: var(--main-font-color-button);
 }
 
-.container {
-  padding: 20px;
-  max-width: 800px;
-  margin: 0 auto;
-}
 `;
 
 export default GlobalStyles;
