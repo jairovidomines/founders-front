@@ -3,15 +3,6 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
 
-:root {
-  --background-color: #fff;
-  --main-color-button: #3f5e46;
-  --main-color-button-disabled: 57%;
-  --main-font: "Inter", sans-serif;
-  --main-font-color: #000;
-  --main-font-color-button: #fff;
-}
-
 *, 
 *:after,
 *:before {
@@ -22,12 +13,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
 body {
-  background-color: var(--background-color);
-  font-family: var(--main-font);
+  background-color: ${(props) => props.theme.colors.backgroundColor};
+  font-family: ${(props) => props.theme.fonts.primary};
   font-weight: 300;
   width: 100%;
   min-height: 100vh;
-  color: var(--main-font-color);
+  color: ${(props) => props.theme.colors.mainFontColor};
 }
 
 .container {
@@ -53,8 +44,8 @@ button {
   border: none;
   border-radius: 5px;
   font-size: 18px;
-  background-color: var(--main-color-button);
-  color: var(--main-font-color-button);
+  background-color: ${(props) => props.theme.colors.mainColorButton};
+  color: ${(props) => props.theme.colors.mainFontColorButton};
 }
 
 `;

@@ -30,7 +30,7 @@ const FormStyled = styled.form`
       background-color: #eee;
       border-radius: 5px;
       padding: 10px;
-      font-family: var(--main-font);
+      font-family: ${(props) => props.theme.fonts.primary};
       font-size: 15px;
       font-weight: 200;
     }
