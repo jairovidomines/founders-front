@@ -13,12 +13,12 @@ const GlobalStyles = createGlobalStyle`
   }
 
 body {
-  background-color: ${(props) => props.theme.colors.backgroundColor};
-  font-family: ${(props) => props.theme.fonts.primary};
+  background-color: #fff;
+  font-family: "Inter", sans-serif;
   font-weight: 300;
   width: 100%;
   min-height: 100vh;
-  color: ${(props) => props.theme.colors.mainFontColor};
+  color: #000;
 }
 
 .container {
@@ -44,8 +44,8 @@ button {
   border: none;
   border-radius: 5px;
   font-size: 18px;
-  background-color: ${(props) => props.theme.colors.mainColorButton};
-  color: ${(props) => props.theme.colors.mainFontColorButton};
+  background-color: #3f5e46;
+  color: #fff;
 }
 
 `;

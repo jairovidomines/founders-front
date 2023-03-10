@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useUser from "../../hooks/useUser/useUser";
 import Button from "../Button/Button";
-import FormStyled from "./FormStyled";
+import FormStyled from "./LoginFormStyled";
 
 const Form = (): JSX.Element => {
   const { loginUser } = useUser();
@@ -33,6 +33,8 @@ const Form = (): JSX.Element => {
         className="form__logo"
         src="../images/founders_logo.png"
         alt="founders_logo"
+        width={141}
+        height={27}
       ></img>
       <label className="form__label">
         Username
