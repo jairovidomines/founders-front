@@ -51,4 +51,18 @@ describe("Given a useUser custom hook", () => {
       expect(spy).toHaveBeenCalledWith(loginUserActionCreator(mockLoginUser));
     });
   });
+
+  describe("When the loginUser function is called and the credentials are incorrect", () => {
+    test("Then it should call the showErrorToast and show the message: 'Wrong credentials'", async () => {
+      const {
+        result: {
+          current: { loginUser },
+        },
+      } = renderHook(() => useUser(), { wrapper: Wrapper });
+
+      await loginUser(userCredentials);
+
+      expect(spy).not.toBeCalled();
+    });
+  });
 });

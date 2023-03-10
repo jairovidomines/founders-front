@@ -90,7 +90,7 @@ describe("Given a Form component", () => {
     });
   });
 
-  describe("When tue user writes on the 'Password' input", () => {
+  describe("When the user writes on the 'Password' input", () => {
     test("Then it changes the value of this input", async () => {
       const expectPasswordLabel = "Password";
       const expectResult = "Jairo1020!";
