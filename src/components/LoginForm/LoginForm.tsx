@@ -5,7 +5,6 @@ import FormStyled from "./LoginFormStyled";
 
 const Form = (): JSX.Element => {
   const { loginUser } = useUser();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
