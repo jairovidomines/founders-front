@@ -3,7 +3,7 @@ import useUser from "../../hooks/useUser/useUser";
 import Button from "../Button/Button";
 import FormStyled from "./LoginFormStyled";
 
-const Form = (): JSX.Element => {
+const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -64,4 +64,4 @@ const Form = (): JSX.Element => {
   );
 };
 
-export default Form;
+export default LoginForm;
