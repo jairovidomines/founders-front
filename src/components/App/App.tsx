@@ -1,10 +1,10 @@
-import LoginPage from "../../pages/LoginPage";
+import Layout from "../Layout/Layout";
 
 const App = () => {
   return (
     <>
       <div className="container"></div>
-      <LoginPage />
+      <Layout />
     </>
   );
 };
