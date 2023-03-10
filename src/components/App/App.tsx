@@ -1,10 +1,10 @@
-import Form from "../Form/Form";
+import LoginPage from "../../pages/LoginPage";
 
 const App = () => {
   return (
     <>
       <div className="container"></div>
-      <Form />
+      <LoginPage />
     </>
   );
 };

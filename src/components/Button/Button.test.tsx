@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import Wrapper from "../../mocks/Wrapper";
+import Wrapper from "../../testUtils/Wrapper";
 import GlobalStyles from "../../styles/GlobalStyles";
 import Button from "./Button";
 

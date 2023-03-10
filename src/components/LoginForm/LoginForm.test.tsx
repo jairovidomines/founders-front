@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { UserCredentials } from "../../hooks/useUser/types";
 import theme from "../../styles/Theme";
 import renderWithProviders from "../../testUtils/renderWithProviders";
-import Form from "./Form";
+import Form from "./LoginForm";
 
 const mockLoginUser = jest.fn();
 
@@ -17,11 +17,7 @@ describe("Given a Form component", () => {
     test("Then it should show an image with alt text: 'founders_logo'", () => {
       const expectResult = "founders_logo";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <Form />
-        </ThemeProvider>
-      );
+      renderWithProviders(<Form />);
 
       const result = screen.getByAltText(expectResult);
 
@@ -31,11 +27,7 @@ describe("Given a Form component", () => {
     test("Then it should show an input with label text: 'Username'", () => {
       const expectResult = "Username";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <Form />
-        </ThemeProvider>
-      );
+      renderWithProviders(<Form />);
 
       const result = screen.getByLabelText(expectResult);
 
@@ -45,11 +37,7 @@ describe("Given a Form component", () => {
     test("Then it should show an input with label text: 'Password'", () => {
       const expectResult = "Password";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <Form />
-        </ThemeProvider>
-      );
+      renderWithProviders(<Form />);
 
       const result = screen.getByLabelText(expectResult);
 
@@ -59,11 +47,7 @@ describe("Given a Form component", () => {
     test("Then it should show a button with text: 'Log in'", () => {
       const expectResult = "Log in";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <Form />
-        </ThemeProvider>
-      );
+      renderWithProviders(<Form />);
 
       const result = screen.getByRole("button", { name: expectResult });
 
@@ -73,11 +57,7 @@ describe("Given a Form component", () => {
     test("Then it should show the text: 'Not a member?'", () => {
       const expectResult = "Not a member?";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <Form />
-        </ThemeProvider>
-      );
+      renderWithProviders(<Form />);
 
       const result = screen.getByText(expectResult);
 
@@ -87,11 +67,7 @@ describe("Given a Form component", () => {
     test("Then it should show the text: 'Sign up'", () => {
       const expectResult = "Sign up";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <Form />
-        </ThemeProvider>
-      );
+      renderWithProviders(<Form />);
 
       const result = screen.getByText(expectResult);
 
@@ -104,11 +80,7 @@ describe("Given a Form component", () => {
       const expectUsernameLabel = "Username";
       const expectResult = "Jairo";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <Form />
-        </ThemeProvider>
-      );
+      renderWithProviders(<Form />);
 
       const result = screen.getByLabelText(expectUsernameLabel);
 
@@ -123,11 +95,7 @@ describe("Given a Form component", () => {
       const expectPasswordLabel = "Password";
       const expectResult = "Jairo1020!";
 
-      renderWithProviders(
-        <ThemeProvider theme={theme}>
-          <Form />;
-        </ThemeProvider>
-      );
+      renderWithProviders(<Form />);
 
       const result = screen.getByLabelText(expectPasswordLabel);
 
