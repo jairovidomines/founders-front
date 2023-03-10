@@ -37,9 +37,6 @@ const FormStyled = styled.form`
   }
 
   .user {
-    position: absolute;
-    bottom: 36px;
-
     &__not-a-member {
       font-weight: 400;
     }
