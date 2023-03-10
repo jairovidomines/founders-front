@@ -2,10 +2,9 @@ import Layout from "../Layout/Layout";
 
 const App = () => {
   return (
-    <>
-      <div className="container"></div>
+    <div className="container">
       <Layout />
-    </>
+    </div>
   );
 };
 
