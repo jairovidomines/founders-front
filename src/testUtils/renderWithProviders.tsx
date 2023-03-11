@@ -6,10 +6,10 @@ import { Provider } from "react-redux";
 import GlobalStyles from "../styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/Theme";
-import { router } from "../routers/routes";
+import { getComponentRouter, router } from "../routers/routes";
 import { RouterProvider } from "react-router";
 
-const renderWithProviders = (
+export const renderWithProviders = (
   ui: React.ReactElement,
   preloadedState?: PreloadedState<RootState>
 ) => {
@@ -29,4 +29,14 @@ const renderWithProviders = (
   return render(ui, { wrapper: Wrapper });
 };
 
-export default renderWithProviders;
+export const renderRouterWithProviders = (
+  ui?: React.ReactElement,
+  preloadedState?: PreloadedState<RootState>
+) => {
+  const routerWithProvider = ui ? getComponentRouter(ui) : router;
+
+  return renderWithProviders(
+    <RouterProvider router={routerWithProvider}></RouterProvider>,
+    preloadedState
+  );
+};
