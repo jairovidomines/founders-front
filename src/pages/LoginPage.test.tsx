@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import renderWithProviders from "../testUtils/renderWithProviders";
+import { renderWithProviders } from "../testUtils/renderWithProviders";
 import LoginPage from "./LoginPage";
 
 describe("Given a LoginPage page", () => {
