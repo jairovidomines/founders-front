@@ -6,6 +6,8 @@ import { Provider } from "react-redux";
 import GlobalStyles from "../styles/GlobalStyles";
 import { ThemeProvider } from "styled-components";
 import theme from "../styles/Theme";
+import { router } from "../routers/routes";
+import { RouterProvider } from "react-router";
 
 const renderWithProviders = (
   ui: React.ReactElement,
@@ -15,12 +17,12 @@ const renderWithProviders = (
 
   const Wrapper = ({ children }: PropsWithChildren): JSX.Element => {
     return (
-      <ThemeProvider theme={theme}>
-        <Provider store={testStore}>
+      <Provider store={testStore}>
+        <ThemeProvider theme={theme}>
           <GlobalStyles />
-          {children}
-        </Provider>
-      </ThemeProvider>
+          <RouterProvider router={router} />
+        </ThemeProvider>
+      </Provider>
     );
   };
 
