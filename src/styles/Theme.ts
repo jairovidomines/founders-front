@@ -6,6 +6,7 @@ const theme: DefaultTheme = {
   },
   colors: {
     backgroundColor: "#fff",
+    backgroundColorNavigationBar: "#fdfbfb",
     mainColorButton: "#3f5e46",
     mainFontColor: "#000",
     mainFontColorButton: "#fff",
