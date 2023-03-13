@@ -13,9 +13,9 @@ const NavigationBar = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);
 
   return (
-    <NavigationStyled className="navigation">
+    <NavigationStyled>
       {isLogged ? (
-        <>
+        <div className="navigation">
           <FontAwesomeIcon icon={faList} className="fa-solid--active" />
           <FontAwesomeIcon icon={faBookmark} className="fa-solid--active" />
           <FontAwesomeIcon icon={faHouse} className="fa-solid--active" />
@@ -24,7 +24,7 @@ const NavigationBar = (): JSX.Element => {
             icon={faArrowRightFromBracket}
             className="fa-solid--active"
           />
-        </>
+        </div>
       ) : (
         ""
       )}
