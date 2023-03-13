@@ -1,5 +1,6 @@
 import useToken from "../../hooks/useToken/useToken";
 import Layout from "../Layout/Layout";
+import NavigationBar from "../NavigationBar/NavigationBar";
 
 const App = () => {
   const { getToken } = useToken();
@@ -8,9 +9,10 @@ const App = () => {
 
   return (
     <>
-      <div className="containeer">
+      <div className="container">
         <Layout />
       </div>
+      <NavigationBar />
     </>
   );
 };
