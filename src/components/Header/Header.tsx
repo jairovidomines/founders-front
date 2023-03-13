@@ -1,6 +1,5 @@
 import { useAppSelector } from "../../store/hooks";
 import HeaderStyled from "./HeaderStyled";
-import NavigationBar from "../NavigationBar/NavigationBar";
 
 const Header = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);
@@ -22,7 +21,6 @@ const Header = (): JSX.Element => {
           ""
         )}
       </HeaderStyled>
-      <NavigationBar />
     </>
   );
 };
