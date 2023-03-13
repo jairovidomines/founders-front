@@ -3,7 +3,7 @@ import Layout from "../Layout/Layout";
 const App = () => {
   return (
     <>
-      <div className="containeeeer">
+      <div className="containeer">
         <Layout />
       </div>
     </>
