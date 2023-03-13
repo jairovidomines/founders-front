@@ -5,9 +5,13 @@ import Header from "./Header";
 describe("Given a Header component", () => {
   describe("When it is rendered", () => {
     test("Then it should show the logo", () => {
-      renderWithProviders(<Header />);
+      const expectText = "founders_logo";
 
-      const result = screen.getByRole("img");
+      renderWithProviders(<Header />, {
+        user: { isLogged: true, id: "", token: "", username: "" },
+      });
+
+      const result = screen.getByAltText(expectText);
 
       expect(result).toBeInTheDocument();
     });

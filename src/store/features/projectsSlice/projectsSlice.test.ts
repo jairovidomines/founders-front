@@ -10,6 +10,7 @@ const mockProjectAndroid: ProjectDataStructure = {
   avatar: "avatar.webp",
   shortDescription: "This is a short description",
   description: "This is a description",
+  id: "13579",
 };
 
 const mockProjectIos: ProjectDataStructure = {
@@ -21,6 +22,7 @@ const mockProjectIos: ProjectDataStructure = {
   avatar: "avatar.webp",
   shortDescription: "This is a short description",
   description: "This is a description",
+  id: "2468",
 };
 
 const projects: ProjectsDataStructure = [mockProjectAndroid, mockProjectIos];

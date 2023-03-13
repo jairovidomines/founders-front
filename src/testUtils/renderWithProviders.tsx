@@ -20,7 +20,7 @@ export const renderWithProviders = (
       <Provider store={testStore}>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
-          <RouterProvider router={router} />
+          {children}
         </ThemeProvider>
       </Provider>
     );

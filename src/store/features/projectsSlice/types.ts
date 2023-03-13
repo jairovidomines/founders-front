@@ -7,6 +7,11 @@ export interface ProjectDataStructure {
   avatar: string;
   shortDescription: string;
   description: string;
+  id: string;
+}
+
+export interface ProjectsData {
+  projects: ProjectsDataStructure;
 }
 
 export type ProjectsDataStructure = ProjectDataStructure[];
