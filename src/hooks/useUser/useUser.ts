@@ -2,14 +2,20 @@ import { useAppDispatch } from "../../store/hooks";
 import { CustomTokenPayload, LoginResponse, UserCredentials } from "./types";
 import decodeToken from "jwt-decode";
 import { User } from "../../store/features/userSlice/types";
-import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
+import {
+  loginUserActionCreator,
+  logoutUserActionCreator,
+} from "../../store/features/userSlice/userSlice";
 import { showErrorToast } from "../../modals/modals";
+import useToken from "../useToken/useToken";
 interface UseUserStructure {
   loginUser: (userCredentials: UserCredentials) => Promise<void>;
+  logoutUser: () => void;
 }
 
 const useUser = (): UseUserStructure => {
   const dispatch = useAppDispatch();
+  const { removeToken } = useToken();
 
   const apiUrl = process.env.REACT_APP_URL_API;
   const usersEndpoint = "/users";
@@ -45,7 +51,12 @@ const useUser = (): UseUserStructure => {
     }
   };
 
-  return { loginUser };
+  const logoutUser = () => {
+    removeToken();
+    dispatch(logoutUserActionCreator());
+  };
+
+  return { loginUser, logoutUser };
 };
 
 export default useUser;
