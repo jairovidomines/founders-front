@@ -35,7 +35,7 @@ ol, ul, li {
   list-style: none;
 }
 
-h1 {
+h1, h2 {
   font-weight: 700;
 }
 

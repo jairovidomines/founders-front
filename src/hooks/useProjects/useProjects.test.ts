@@ -22,7 +22,9 @@ describe("Given a useApi custom hook", () => {
 
       await getProjects();
 
-      expect(spy).toHaveBeenCalledWith(loadProjectsActionCreator(mockProjects));
+      expect(spy).toHaveBeenCalledWith(
+        loadProjectsActionCreator(mockProjects.projects)
+      );
     });
   });
 });
