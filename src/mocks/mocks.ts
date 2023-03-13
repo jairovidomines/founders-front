@@ -1,6 +1,6 @@
 import {
   ProjectDataStructure,
-  ProjectsDataStructure,
+  ProjectsData,
 } from "../store/features/projectsSlice/types";
 
 export const mockProjectAndroid: ProjectDataStructure = {
@@ -27,7 +27,6 @@ export const mockProjectIos: ProjectDataStructure = {
   id: "2468",
 };
 
-export const mockProjects: ProjectsDataStructure = [
-  mockProjectAndroid,
-  mockProjectIos,
-];
+export const mockProjects: ProjectsData = {
+  projects: [mockProjectAndroid, mockProjectIos],
+};

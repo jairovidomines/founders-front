@@ -1,40 +1,21 @@
+import { mockProjectAndroid, mockProjectIos } from "../../../mocks/mocks";
 import { loadProjectsActionCreator, projectsReducer } from "./projectsSlice";
-import { ProjectDataStructure, ProjectsDataStructure } from "./types";
-
-const mockProjectAndroid: ProjectDataStructure = {
-  name: "Anyone",
-  website: "www.anyone.com",
-  twitter: "@anyone",
-  platforms: "Android",
-  monthlyUsers: "1000",
-  avatar: "avatar.webp",
-  shortDescription: "This is a short description",
-  description: "This is a description",
-  id: "13579",
-};
-
-const mockProjectIos: ProjectDataStructure = {
-  name: "Anyone",
-  website: "www.anyone.com",
-  twitter: "@anyone",
-  platforms: "IOS",
-  monthlyUsers: "1000",
-  avatar: "avatar.webp",
-  shortDescription: "This is a short description",
-  description: "This is a description",
-  id: "2468",
-};
+import { ProjectsData, ProjectsDataStructure } from "./types";
 
 const projects: ProjectsDataStructure = [mockProjectAndroid, mockProjectIos];
+const initialProjectsState: ProjectsData = { projects: [] };
 
 describe("Given a user reducer", () => {
   describe("When it receives a new state an the action to load projects", () => {
     test("Then it should return a list of 2 projects", () => {
-      const expectedProjectsLoaded: ProjectsDataStructure = projects;
-
       const loadProjectsAction = loadProjectsActionCreator(projects);
 
-      const newProjects = projectsReducer([], loadProjectsAction);
+      const expectedProjectsLoaded: ProjectsData = { projects: projects };
+
+      const newProjects = projectsReducer(
+        initialProjectsState,
+        loadProjectsAction
+      );
 
       expect(newProjects).toStrictEqual(expectedProjectsLoaded);
     });

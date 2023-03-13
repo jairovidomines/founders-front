@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { loadProjectsActionCreator } from "../../store/features/projectsSlice/projectsSlice";
-import { ProjectsDataStructure } from "../../store/features/projectsSlice/types";
+import { ProjectsData } from "../../store/features/projectsSlice/types";
 import { useAppDispatch } from "../../store/hooks";
 
 const apiUrl = process.env.REACT_APP_URL_API;
@@ -19,7 +19,7 @@ const useProjects = () => {
           headers: { "Content-type": "application/json; charset=UTF-8" },
         }
       );
-      const projects = (await response.json()) as ProjectsDataStructure;
+      const { projects } = (await response.json()) as ProjectsData;
 
       if (!response.ok) {
         return;
