@@ -6,7 +6,6 @@ import useUser from "./useUser";
 import decodeToken from "jwt-decode";
 import { User } from "../../store/features/userSlice/types";
 import { loginUserActionCreator } from "../../store/features/userSlice/userSlice";
-import { showModalActionCreator } from "../../store/uiSlice/uiSlice";
 
 jest.mock("jwt-decode", () => jest.fn());
 
@@ -54,25 +53,16 @@ describe("Given a useUser custom hook", () => {
   });
 
   describe("When the loginUser function is called and the credentials are incorrect", () => {
-    test("Then it should call the showModalActionCreator function and show the message: 'Wrong credentials'", async () => {
-      const expectResult = "Wrong credentials";
-
+    test("Then it should call the showErrorToast function and show the message: 'Wrong credentials'", async () => {
       const {
         result: {
           current: { loginUser },
         },
       } = renderHook(() => useUser(), { wrapper: Wrapper });
 
-      const userWrongCredentials: UserCredentials = {
-        username: "Jairus",
-        password: "Jairus1020!",
-      };
+      await loginUser(userCredentials);
 
-      await loginUser(userWrongCredentials);
-
-      expect(spy).toHaveBeenCalledWith(
-        showModalActionCreator({ modal: expectResult, isError: true })
-      );
+      expect(spy).not.toBeCalled();
     });
   });
 });

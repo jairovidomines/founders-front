@@ -1,18 +1,12 @@
-import { useEffect } from "react";
-import { useAppSelector } from "../../store/hooks";
-import { showErrorToast } from "../../modals/modals";
 import { Outlet } from "react-router";
+import Header from "../Header/Header";
+import { ToastContainer } from "react-toastify";
 
 const Layout = (): JSX.Element => {
-  const { modal } = useAppSelector((state) => state.ui);
-
-  useEffect(() => {
-    if (modal) {
-      showErrorToast(modal);
-    }
-  }, [modal]);
   return (
     <>
+      <Header />
+      <ToastContainer hideProgressBar />
       <Outlet />
     </>
   );
