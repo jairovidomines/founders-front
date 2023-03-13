@@ -6,11 +6,13 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import useUser from "../../hooks/useUser/useUser";
 import { useAppSelector } from "../../store/hooks";
 import NavigationStyled from "./NavigationBarStyled";
 
 const NavigationBar = (): JSX.Element => {
   const { isLogged } = useAppSelector((state) => state.user);
+  const { logoutUser } = useUser();
 
   return (
     <NavigationStyled>
@@ -23,6 +25,7 @@ const NavigationBar = (): JSX.Element => {
           <FontAwesomeIcon
             icon={faArrowRightFromBracket}
             className="fa-solid--active"
+            onClick={logoutUser}
           />
         </div>
       ) : (
