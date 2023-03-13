@@ -3,7 +3,7 @@ import styled from "styled-components";
 const CardStyled = styled.article`
   display: flex;
   gap: 15px;
-  padding: 10px 0;
+  padding: 15px 0;
 
   .card {
     &__image {
@@ -17,7 +17,7 @@ const CardStyled = styled.article`
     }
 
     &__content-name {
-      font-weight: 700;
+      font-size: 18px;
     }
   }
 `;
