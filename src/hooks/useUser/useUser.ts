@@ -56,6 +56,8 @@ const useUser = (): UseUserStructure => {
       localStorage.setItem("token", token);
     } catch {
       showErrorToast("Wrong credentials");
+
+      dispatch(unsetIsLoadingActionCreator());
     }
   };
 

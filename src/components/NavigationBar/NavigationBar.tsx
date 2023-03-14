@@ -1,6 +1,5 @@
 import {
   faArrowRightFromBracket,
-  faBookmark,
   faHouse,
   faList,
   faPlus,
@@ -18,9 +17,8 @@ const NavigationBar = (): JSX.Element => {
     <NavigationStyled>
       {isLogged ? (
         <div className="navigation">
-          <FontAwesomeIcon icon={faList} className="fa-solid--active" />
-          <FontAwesomeIcon icon={faBookmark} className="fa-solid--active" />
           <FontAwesomeIcon icon={faHouse} className="fa-solid--active" />
+          <FontAwesomeIcon icon={faList} className="fa-solid--active" />
           <FontAwesomeIcon icon={faPlus} className="fa-solid--active" />
           <FontAwesomeIcon
             icon={faArrowRightFromBracket}
