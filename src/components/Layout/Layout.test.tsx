@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "../../testUtils/renderWithProviders";
+import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
 import Header from "../Header/Header";
 
 describe("Given a Layout component", () => {
@@ -7,7 +7,7 @@ describe("Given a Layout component", () => {
     test("Then it should show a button with text: 'Log in'", () => {
       const expectText = "founders_logo";
 
-      renderWithProviders(<Header />, {
+      renderRouterWithProviders(<Header />, {
         user: { isLogged: true, id: "", token: "", username: "" },
       });
 
