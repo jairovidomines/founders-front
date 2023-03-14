@@ -1,5 +1,7 @@
-import { UiState } from "./types";
+import { ModalPayload, UiState } from "./types";
 import {
+  closeModalActionCreator,
+  openModalActionCreator,
   setIsLoadingActionCreator,
   uiReducer,
   unsetIsLoadingActionCreator,
@@ -49,6 +51,62 @@ describe("Given a uiReducer", () => {
       const newIsLoadingState = uiReducer(initialUiState, unsetIsLoadingAction);
 
       expect(newIsLoadingState).toStrictEqual(expectedUiState);
+    });
+  });
+
+  describe("When it is called with an openModal action after showing a modal of success with text: 'Delete was successfull'", () => {
+    test("Then it should hide the modal", () => {
+      const uiInitialState: UiState = {
+        isLoading: false,
+        modal: {
+          isError: true,
+          isSucess: false,
+          message: "Delete was successfull",
+        },
+      };
+
+      const modalPayload: ModalPayload = {
+        isError: false,
+        isSuccess: true,
+        message: "Delete was successfull",
+      };
+
+      const expectedNewState: UiState = {
+        isLoading: false,
+        modal: {
+          isError: false,
+          isSucess: true,
+          message: "Delete was successfull",
+        },
+      };
+
+      const openModalAction = openModalActionCreator(modalPayload);
+      const newUiState = uiReducer(uiInitialState, openModalAction);
+
+      expect(newUiState).toStrictEqual(expectedNewState);
+    });
+  });
+
+  describe("When it is called with a closeModal action after showing a modal for an error with text: 'Wrong credentials'", () => {
+    test("Then it should hide the modal", () => {
+      const uiInitialState: UiState = {
+        isLoading: false,
+        modal: { isError: true, isSucess: false, message: "Wrong credentials" },
+      };
+
+      const expectedNewState: UiState = {
+        isLoading: false,
+        modal: {
+          isError: false,
+          isSucess: false,
+          message: "",
+        },
+      };
+
+      const closeModalAction = closeModalActionCreator();
+      const newUiState = uiReducer(uiInitialState, closeModalAction);
+
+      expect(newUiState).toStrictEqual(expectedNewState);
     });
   });
 });
