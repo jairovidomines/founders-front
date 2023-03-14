@@ -25,7 +25,7 @@ const FormStyled = styled.form`
     }
 
     &__input {
-      width: 350px;
+      min-width: 90vw;
       height: 39px;
       background-color: #eee;
       border-radius: 5px;
