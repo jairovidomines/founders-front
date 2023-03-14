@@ -11,7 +11,7 @@ describe("Given a Header component", () => {
         user: { isLogged: true, id: "", token: "", username: "" },
       });
 
-      const result = screen.getByAltText(expectText);
+      const result = screen.getByTestId(expectText);
 
       expect(result).toBeInTheDocument();
     });

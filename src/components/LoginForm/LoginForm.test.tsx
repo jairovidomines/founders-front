@@ -17,7 +17,7 @@ describe("Given a Form component", () => {
 
       renderWithProviders(<LoginForm />);
 
-      const result = screen.getByAltText(expectResult);
+      const result = screen.getByTestId(expectResult);
 
       expect(result).toBeInTheDocument();
     });
