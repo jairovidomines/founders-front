@@ -27,10 +27,6 @@ const useProjects = () => {
       );
       const { projects } = (await response.json()) as ProjectsData;
 
-      if (!response.ok) {
-        return;
-      }
-
       dispatch(unsetIsLoadingActionCreator());
       dispatch(loadProjectsActionCreator(projects));
     } catch (error) {
