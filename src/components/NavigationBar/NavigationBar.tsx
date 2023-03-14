@@ -15,7 +15,7 @@ const NavigationBar = (): JSX.Element => {
 
   return (
     <NavigationStyled>
-      {isLogged ? (
+      {isLogged && (
         <div className="navigation">
           <FontAwesomeIcon icon={faHouse} className="fa-solid--active" />
           <FontAwesomeIcon icon={faList} className="fa-solid--active" />
@@ -26,8 +26,6 @@ const NavigationBar = (): JSX.Element => {
             onClick={logoutUser}
           />
         </div>
-      ) : (
-        ""
       )}
     </NavigationStyled>
   );

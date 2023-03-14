@@ -7,7 +7,7 @@ const Header = (): JSX.Element => {
   return (
     <>
       <HeaderStyled>
-        {isLogged ? (
+        {isLogged && (
           <>
             <img
               className="header__logo"
@@ -17,8 +17,6 @@ const Header = (): JSX.Element => {
               height={17}
             ></img>
           </>
-        ) : (
-          ""
         )}
       </HeaderStyled>
     </>
