@@ -5,7 +5,7 @@ const routes = {
   user: "/users",
   login: "/login",
   projects: "/projects",
-  getProjects: "/projects",
+  getProjects: "/",
 };
 
 export const handlers = [
