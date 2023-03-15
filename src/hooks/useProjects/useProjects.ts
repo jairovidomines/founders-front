@@ -9,7 +9,7 @@ import { useAppDispatch } from "../../store/hooks";
 
 const apiUrl = process.env.REACT_APP_URL_API;
 const pathProjects = "/projects";
-const getProjectsEndpoint = "/projects";
+const getProjectsEndpoint = "/";
 
 const useProjects = () => {
   const dispatch = useAppDispatch();
