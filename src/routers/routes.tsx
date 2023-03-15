@@ -3,15 +3,16 @@ import App from "../components/App/App";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
-import endpoints from "./types";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 const routes: RouteObject[] = [
   {
     path: "/",
     element: <App />,
+    errorElement: <NotFoundPage />,
     children: [
       { path: "/", element: <ProtectedRoute element={<HomePage />} /> },
-      { path: endpoints.login, element: <LoginPage /> },
+      { path: "/login", element: <LoginPage /> },
     ],
   },
 ];
