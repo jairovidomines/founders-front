@@ -7,9 +7,12 @@ describe("Given an App component", () => {
     test("Then it should show a button with text 'Log in'", () => {
       const expectText = "founders_logo";
 
-      renderRouterWithProviders(<App />, {
-        user: { isLogged: true, id: "", token: "", username: "" },
-      });
+      renderRouterWithProviders(
+        {
+          user: { isLogged: true, id: "", token: "", username: "" },
+        },
+        <App />
+      );
 
       const result = screen.getByTestId(expectText);
 

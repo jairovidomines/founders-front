@@ -33,7 +33,7 @@ describe("Given a LoginPage page", () => {
         isLogged: true,
       };
 
-      renderRouterWithProviders(<LoginPage />, { user: user });
+      renderRouterWithProviders({ user: user }, <LoginPage />);
       expect(ReactRouterDom.Navigate).toHaveBeenCalled();
     });
   });
