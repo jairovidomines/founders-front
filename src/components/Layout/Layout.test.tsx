@@ -7,9 +7,12 @@ describe("Given a Layout component", () => {
     test("Then it should show a button with text: 'Log in'", () => {
       const expectText = "founders_logo";
 
-      renderRouterWithProviders(<Layout />, {
-        user: { isLogged: true, id: "", token: "", username: "" },
-      });
+      renderRouterWithProviders(
+        {
+          user: { isLogged: true, id: "", token: "", username: "" },
+        },
+        <Layout />
+      );
 
       const result = screen.getByTestId(expectText);
 
@@ -21,7 +24,7 @@ describe("Given a Layout component", () => {
     test("Then it should show the Loader component", () => {
       const areaLabel = "Page loading";
 
-      renderRouterWithProviders(<Layout />, {
+      renderRouterWithProviders({
         ui: {
           isLoading: true,
           modal: { message: "", isError: true, isSucess: false },

@@ -7,7 +7,10 @@ describe("Given a NotFoundPage", () => {
     test("Then it should show an icon'", () => {
       const expectText = "page_not_found";
 
-      renderRouterWithProviders(<NotFoundPage />);
+      renderRouterWithProviders(
+        { user: { isLogged: true, id: "", token: "", username: "" } },
+        <NotFoundPage />
+      );
 
       const result = screen.getByTestId(expectText);
 
@@ -17,7 +20,10 @@ describe("Given a NotFoundPage", () => {
     test("Then it should show a button with text: 'Back to home page'", () => {
       const expectText = "Back to home page";
 
-      renderRouterWithProviders(<NotFoundPage />);
+      renderRouterWithProviders(
+        { user: { isLogged: true, id: "", token: "", username: "" } },
+        <NotFoundPage />
+      );
 
       const result = screen.getByRole("link", { name: expectText });
 
