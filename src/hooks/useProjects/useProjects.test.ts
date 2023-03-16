@@ -3,6 +3,7 @@ import { errorHandlers } from "../../mocks/handlers";
 import { mockProjects } from "../../mocks/mocks";
 import { server } from "../../mocks/server";
 import { loadProjectsActionCreator } from "../../store/features/projectsSlice/projectsSlice";
+import { unsetIsLoadingActionCreator } from "../../store/features/uiSlice/uiSlice";
 import { store } from "../../store/store";
 import Wrapper from "../../testUtils/Wrapper";
 import useProjects from "./useProjects";
@@ -47,6 +48,53 @@ describe("Given a useApi custom hook", () => {
       expect(spy).not.toHaveBeenCalledWith(
         loadProjectsActionCreator(mockProjects.projects)
       );
+    });
+  });
+
+  describe("When the getUsersProjects function is called", () => {
+    beforeEach(() => {
+      global.fetch = jest.fn().mockResolvedValue({
+        ok: true,
+        json: jest.fn().mockResolvedValue({}),
+      });
+    });
+
+    test("Then it should make a request with an authorization header", async () => {
+      const token = "";
+      const {
+        result: {
+          current: { getUserProjects },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await getUserProjects();
+
+      expect(global.fetch).toHaveBeenCalledWith(
+        `${process.env.REACT_APP_URL_API}/projects/my-projects`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    });
+  });
+
+  describe("When the getUserProjects function is called and an error happens", () => {
+    beforeEach(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+
+    test("Then it should call the dispatch", async () => {
+      const {
+        result: {
+          current: { getUserProjects },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await getUserProjects();
+
+      expect(spy).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
     });
   });
 });

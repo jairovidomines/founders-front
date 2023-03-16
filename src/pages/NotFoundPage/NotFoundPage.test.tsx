@@ -2,7 +2,7 @@ import { screen } from "@testing-library/react";
 import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
 import NotFoundPage from "./NotFoundPage";
 
-describe("Given a NotFound component", () => {
+describe("Given a NotFoundPage", () => {
   describe("When it is rendered", () => {
     test("Then it should show an icon'", () => {
       const expectText = "page_not_found";

@@ -17,12 +17,8 @@ const NavigationStyled = styled.nav`
     height: 1.4rem;
   }
 
-  .fa-solid {
-    color: red;
-
-    &--active_hover {
-      color: blue;
-    }
+  .navigation__link {
+    color: ${(props) => props.theme.colors.mainFontColor};
   }
 `;
 

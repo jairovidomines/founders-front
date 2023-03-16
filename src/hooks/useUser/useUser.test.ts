@@ -25,14 +25,14 @@ const userCredentials: UserCredentials = {
 
 const mockTokenPayload: CustomTokenPayload = {
   username: "Jairo",
-  id: "12345678",
+  sub: "12345678",
 };
 
 const mockToken = "jairo1020!";
 
 const mockLoginUser: User = {
   username: mockTokenPayload.username,
-  id: mockTokenPayload.id,
+  id: mockTokenPayload.sub,
   token: mockToken,
 };
 

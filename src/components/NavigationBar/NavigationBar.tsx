@@ -5,6 +5,7 @@ import {
   faPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { NavLink } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
 import { useAppSelector } from "../../store/hooks";
 import NavigationStyled from "./NavigationBarStyled";
@@ -17,12 +18,25 @@ const NavigationBar = (): JSX.Element => {
     <NavigationStyled>
       {isLogged && (
         <div className="navigation">
-          <FontAwesomeIcon icon={faHouse} className="fa-solid--active" />
-          <FontAwesomeIcon icon={faList} className="fa-solid--active" />
-          <FontAwesomeIcon icon={faPlus} className="fa-solid--active" />
+          <NavLink to={"/"}>
+            <FontAwesomeIcon
+              icon={faHouse}
+              className="fa-solid--active navigation__link"
+            />
+          </NavLink>
+          <NavLink to={"/my-projects"}>
+            <FontAwesomeIcon
+              icon={faList}
+              className="fa-solid--active navigation__link"
+            />
+          </NavLink>
+          <FontAwesomeIcon
+            icon={faPlus}
+            className="fa-solid--active navigation__link"
+          />
           <FontAwesomeIcon
             icon={faArrowRightFromBracket}
-            className="fa-solid--active"
+            className="fa-solid--active navigation__link"
             onClick={logoutUser}
           />
         </div>
