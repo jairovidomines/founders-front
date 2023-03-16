@@ -1,6 +1,17 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "../../testUtils/renderWithProviders";
+import * as ReactRouterDom from "react-router-dom";
+import "react-router-dom";
+import { UserState } from "../../store/features/userSlice/types";
+import {
+  renderRouterWithProviders,
+  renderWithProviders,
+} from "../../testUtils/renderWithProviders";
 import LoginPage from "./LoginPage";
+
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  Navigate: jest.fn(),
+}));
 
 describe("Given a LoginPage page", () => {
   describe("When it is rendered", () => {
@@ -12,6 +23,18 @@ describe("Given a LoginPage page", () => {
       const result = screen.getByRole("button", { name: expectResult });
 
       expect(result).toBeInTheDocument();
+    });
+
+    test("Then it should navigate to the root path", () => {
+      const user: UserState = {
+        username: "",
+        token: "",
+        id: "",
+        isLogged: true,
+      };
+
+      renderRouterWithProviders(<LoginPage />, { user: user });
+      expect(ReactRouterDom.Navigate).toHaveBeenCalled();
     });
   });
 });
