@@ -1,16 +1,8 @@
-import { useEffect } from "react";
-import useProjects from "../../hooks/useProjects/useProjects";
 import { useAppSelector } from "../../store/hooks";
 import Card from "../Card/Card";
 import CardListStyled from "./CardListStyled";
 
 const CardList = (): JSX.Element => {
-  const { getProjects } = useProjects();
-
-  useEffect(() => {
-    getProjects();
-  }, [getProjects]);
-
   const projects = useAppSelector((state) => state.project.projects);
 
   return (

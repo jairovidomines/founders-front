@@ -1,5 +1,5 @@
 import { screen } from "@testing-library/react";
-import { renderWithProviders } from "../../testUtils/renderWithProviders";
+import { renderRouterWithProviders } from "../../testUtils/renderWithProviders";
 import App from "./App";
 
 describe("Given an App component", () => {
@@ -7,7 +7,7 @@ describe("Given an App component", () => {
     test("Then it should show a button with text 'Log in'", () => {
       const expectText = "founders_logo";
 
-      renderWithProviders(<App />, {
+      renderRouterWithProviders(<App />, {
         user: { isLogged: true, id: "", token: "", username: "" },
       });
 

@@ -4,6 +4,7 @@ import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import PrivatePage from "../pages/PrivatePage/PrivatePage";
 
 const routes: RouteObject[] = [
   {
@@ -13,6 +14,10 @@ const routes: RouteObject[] = [
     children: [
       { path: "/", element: <ProtectedRoute element={<HomePage />} /> },
       { path: "/login", element: <LoginPage /> },
+      {
+        path: "/my-projects",
+        element: <ProtectedRoute element={<PrivatePage />} />,
+      },
     ],
   },
 ];
