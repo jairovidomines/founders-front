@@ -80,7 +80,7 @@ const LoginForm = (): JSX.Element => {
           onChange={handlePassword}
         ></input>
       </label>
-      <Button text="Log in" />
+      <Button className="form__button" text="Log in" />
       <div className="user">
         <span className="user__not-a-member">Not a member? </span>
         <span className="user__sign-up">Sign up</span>

@@ -42,8 +42,7 @@ h1, h2 {
 button {
   border: none;
   border-radius: 5px;
-  font-size: 18px;
-  background-color: #3f5e46;
+
   color: #fff;
 }
 

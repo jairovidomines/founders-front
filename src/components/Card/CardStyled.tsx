@@ -19,6 +19,12 @@ const CardStyled = styled.article`
     &__content-name {
       font-size: 18px;
     }
+
+    &__icon {
+      font-size: 20px;
+      color: ${(props) => props.theme.colors.mainFontColor};
+      background-color: ${(props) => props.theme.colors.backgroundColor};
+    }
   }
 `;
 

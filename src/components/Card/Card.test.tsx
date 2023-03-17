@@ -1,4 +1,5 @@
 import { screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { mockProjectAndroid } from "../../mocks/mocks";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
 import Card from "./Card";
@@ -19,6 +20,20 @@ describe("Given a Card component", () => {
       renderWithProviders(<Card project={mockProjectAndroid} />);
 
       const result = screen.getByRole("heading", { name: expectHeading });
+
+      expect(result).toBeInTheDocument();
+    });
+  });
+
+  describe("When the user click the delete button", () => {
+    test("Then the deleteProject function should be called", async () => {
+      const expectButtonText = "delete";
+
+      renderWithProviders(<Card project={mockProjectAndroid} />);
+
+      const result = screen.getByRole("button", { name: expectButtonText });
+
+      await userEvent.click(result);
 
       expect(result).toBeInTheDocument();
     });

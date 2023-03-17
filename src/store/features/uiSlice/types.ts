@@ -1,6 +1,6 @@
 export interface UiState {
   isLoading: boolean;
-  modal: { message: string; isError: boolean; isSucess: boolean };
+  modal: { message: string; isError: boolean; isSuccess: boolean };
 }
 
 export interface ModalPayload {

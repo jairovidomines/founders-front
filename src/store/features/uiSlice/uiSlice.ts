@@ -3,7 +3,7 @@ import { ModalPayload, UiState } from "./types";
 
 export const initialState: UiState = {
   isLoading: false,
-  modal: { isError: false, message: "", isSucess: false },
+  modal: { isError: false, message: "", isSuccess: false },
 };
 
 const uiSlice = createSlice({
@@ -28,7 +28,7 @@ const uiSlice = createSlice({
       modal: {
         isError: action.payload.isError,
         message: action.payload.message,
-        isSucess: action.payload.isSuccess,
+        isSuccess: action.payload.isSuccess,
       },
     }),
 
@@ -37,7 +37,7 @@ const uiSlice = createSlice({
       modal: {
         message: initialState.modal.message,
         isError: false,
-        isSucess: false,
+        isSuccess: false,
       },
     }),
   },

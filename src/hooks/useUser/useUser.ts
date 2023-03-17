@@ -50,8 +50,8 @@ const useUser = (): UseUserStructure => {
         id,
       };
 
-      dispatch(unsetIsLoadingActionCreator());
       dispatch(loginUserActionCreator(userLogin));
+      dispatch(unsetIsLoadingActionCreator());
 
       localStorage.setItem("token", token);
     } catch {

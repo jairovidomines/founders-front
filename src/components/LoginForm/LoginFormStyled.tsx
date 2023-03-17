@@ -34,6 +34,13 @@ const FormStyled = styled.form`
       font-size: 15px;
       font-weight: 200;
     }
+
+    &__button {
+      width: 195px;
+      height: 52px;
+      font-size: 18px;
+      background-color: #3f5e46;
+    }
   }
 
   .user {

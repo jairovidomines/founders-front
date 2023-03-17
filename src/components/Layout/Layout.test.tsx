@@ -27,7 +27,7 @@ describe("Given a Layout component", () => {
       renderRouterWithProviders({
         ui: {
           isLoading: true,
-          modal: { message: "", isError: true, isSucess: false },
+          modal: { message: "", isError: true, isSuccess: false },
         },
       });
 
