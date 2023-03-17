@@ -8,6 +8,7 @@ export interface ProjectDataStructure {
   shortDescription: string;
   description: string;
   id: string;
+  maker: string;
 }
 
 export interface ProjectsData {

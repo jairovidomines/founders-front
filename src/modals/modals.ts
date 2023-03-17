@@ -12,3 +12,15 @@ export const showErrorToast = (message: string) => {
     theme: "light",
   });
 };
+
+export const showSuccessToast = (message: string) => {
+  toast.success(message, {
+    position: "top-center",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    theme: "light",
+  });
+};

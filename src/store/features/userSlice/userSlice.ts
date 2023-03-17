@@ -20,6 +20,7 @@ export const userSlice = createSlice({
       token: action.payload.token,
       username: action.payload.username,
       isLogged: true,
+      id: action.payload.id,
     }),
     logoutUser: (): UserState => ({ ...initialState }),
   },

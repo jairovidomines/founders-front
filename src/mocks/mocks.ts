@@ -13,6 +13,7 @@ export const mockProjectAndroid: ProjectDataStructure = {
   shortDescription: "This is a short description",
   description: "This is a description",
   id: "13579",
+  maker: "",
 };
 
 export const mockProjectIos: ProjectDataStructure = {
@@ -25,6 +26,7 @@ export const mockProjectIos: ProjectDataStructure = {
   shortDescription: "This is a short description",
   description: "This is a description",
   id: "2468",
+  maker: "",
 };
 
 export const mockProjects: ProjectsData = {

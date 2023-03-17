@@ -1,5 +1,9 @@
 import { useCallback } from "react";
-import { loadProjectsActionCreator } from "../../store/features/projectsSlice/projectsSlice";
+import { showErrorToast, showSuccessToast } from "../../modals/modals";
+import {
+  deleteProjectActionCreator,
+  loadProjectsActionCreator,
+} from "../../store/features/projectsSlice/projectsSlice";
 import { ProjectsData } from "../../store/features/projectsSlice/types";
 import {
   openModalActionCreator,
@@ -12,6 +16,8 @@ const apiUrl = process.env.REACT_APP_URL_API;
 const pathProjects = "/projects";
 const getProjectsEndpoint = "/";
 const getUserProjectsEndpoint = "/my-projects";
+const deleteProjectEndpoint = "/delete";
+const deleteProjectId = "/";
 
 const useProjects = () => {
   const dispatch = useAppDispatch();
@@ -68,7 +74,38 @@ const useProjects = () => {
     }
   }, [dispatch, token]);
 
-  return { getProjects, getUserProjects };
+  const deleteProject = async (id: string) => {
+    try {
+      dispatch(setIsLoadingActionCreator());
+
+      const response = await fetch(
+        `${apiUrl}${pathProjects}${deleteProjectEndpoint}${deleteProjectId}${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        const errorMessage = "Project was not deleted, try again";
+
+        throw new Error(errorMessage);
+      }
+
+      dispatch(deleteProjectActionCreator(id));
+      dispatch(unsetIsLoadingActionCreator());
+      showSuccessToast("Project was succesfully deleted");
+    } catch (error: unknown) {
+      const errorMessage = (error as Error).message;
+      dispatch(unsetIsLoadingActionCreator());
+      showErrorToast(errorMessage);
+    }
+  };
+
+  return { getProjects, getUserProjects, deleteProject };
 };
 
 export default useProjects;
