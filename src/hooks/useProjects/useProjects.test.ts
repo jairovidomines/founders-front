@@ -1,20 +1,39 @@
 import { renderHook } from "@testing-library/react";
+import { toast } from "react-toastify";
 import { errorHandlers } from "../../mocks/handlers";
-import { mockProjects } from "../../mocks/mocks";
+import {
+  mockProjectAndroid,
+  mockProjectIos,
+  mockProjects,
+} from "../../mocks/mocks";
 import { server } from "../../mocks/server";
-import { loadProjectsActionCreator } from "../../store/features/projectsSlice/projectsSlice";
-import { unsetIsLoadingActionCreator } from "../../store/features/uiSlice/uiSlice";
+import { showErrorToast } from "../../modals/modals";
+import {
+  deleteProjectActionCreator,
+  loadProjectsActionCreator,
+} from "../../store/features/projectsSlice/projectsSlice";
+import {
+  setIsLoadingActionCreator,
+  unsetIsLoadingActionCreator,
+} from "../../store/features/uiSlice/uiSlice";
 import { store } from "../../store/store";
 import Wrapper from "../../testUtils/Wrapper";
 import useProjects from "./useProjects";
+
+jest.mock("react-toastify", () => ({
+  toast: {
+    error: jest.fn(),
+    success: jest.fn(),
+  },
+}));
 
 afterEach(() => {
   jest.clearAllMocks();
 });
 
-const spy = jest.spyOn(store, "dispatch");
+const spyDispatch = jest.spyOn(store, "dispatch");
 
-describe("Given a useApi custom hook", () => {
+describe("Given a useProjects custom hook", () => {
   describe("When the getProjects function is called", () => {
     test("Then it should call the dispatch", async () => {
       const {
@@ -25,7 +44,7 @@ describe("Given a useApi custom hook", () => {
 
       await getProjects();
 
-      expect(spy).toHaveBeenCalledWith(
+      expect(spyDispatch).toHaveBeenCalledWith(
         loadProjectsActionCreator(mockProjects.projects)
       );
     });
@@ -45,38 +64,7 @@ describe("Given a useApi custom hook", () => {
 
       await getProjects();
 
-      expect(spy).not.toHaveBeenCalledWith(
-        loadProjectsActionCreator(mockProjects.projects)
-      );
-    });
-  });
-
-  describe("When the getUsersProjects function is called", () => {
-    beforeEach(() => {
-      global.fetch = jest.fn().mockResolvedValue({
-        ok: true,
-        json: jest.fn().mockResolvedValue({}),
-      });
-    });
-
-    test("Then it should make a request with an authorization header", async () => {
-      const token = "";
-      const {
-        result: {
-          current: { getUserProjects },
-        },
-      } = renderHook(() => useProjects(), { wrapper: Wrapper });
-
-      await getUserProjects();
-
-      expect(global.fetch).toHaveBeenCalledWith(
-        `${process.env.REACT_APP_URL_API}/projects/my-projects`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
     });
   });
 
@@ -94,7 +82,99 @@ describe("Given a useApi custom hook", () => {
 
       await getUserProjects();
 
-      expect(spy).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
+      expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
+    });
+  });
+
+  describe("When the getUserProjects function is called", () => {
+    test("Then it should call the dispatch loadProjectsActionCreator", async () => {
+      const {
+        result: {
+          current: { getUserProjects },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await getUserProjects();
+
+      expect(spyDispatch).toHaveBeenCalledWith(
+        loadProjectsActionCreator([mockProjectAndroid, mockProjectIos])
+      );
+    });
+  });
+
+  describe("When the deleteProject function is called", () => {
+    test("Then it should call the dispatch", async () => {
+      const {
+        result: {
+          current: { deleteProject },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await deleteProject(mockProjectAndroid.id);
+
+      expect(spyDispatch).toHaveBeenNthCalledWith(
+        2,
+        deleteProjectActionCreator(mockProjectAndroid.id)
+      );
+    });
+
+    test("Then it should call the setIsLoadingActionCreator dispatch", async () => {
+      const {
+        result: {
+          current: { deleteProject },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await deleteProject(mockProjectAndroid.id);
+
+      expect(spyDispatch).toHaveBeenCalledWith(setIsLoadingActionCreator());
+    });
+
+    test("Then it should call the unsetIsLoadingActionCreator dispatch", async () => {
+      const {
+        result: {
+          current: { deleteProject },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await deleteProject(mockProjectAndroid.id);
+
+      expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
+    });
+  });
+
+  describe("When the deleteProject function is called and the response failed", () => {
+    beforeEach(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+
+    test("Then it should call the showError toas function with the message: 'Project was not deleted, try again'", () => {
+      const errorMessage = "Project was not deleted, try again";
+      const errorOptions = {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        theme: "light",
+      };
+
+      showErrorToast(errorMessage);
+
+      expect(toast.error).toHaveBeenCalledWith(errorMessage, errorOptions);
+    });
+
+    test("Then it should call the dispatch with unsetIsLoadingActionCreator", async () => {
+      const {
+        result: {
+          current: { deleteProject },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await deleteProject(mockProjectAndroid.id);
+
+      expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
     });
   });
 });

@@ -11,13 +11,13 @@ describe("Given a uiReducer", () => {
   describe("When it receives a new state and the action setIsloading", () => {
     test("Then it should return a new state with the property isLoading set as true", () => {
       const initialUiState: UiState = {
-        modal: { isError: false, isSucess: true, message: "" },
+        modal: { isError: false, isSuccess: true, message: "" },
         isLoading: false,
       };
 
       const expectedUiState: UiState = {
         isLoading: true,
-        modal: { isError: false, isSucess: true, message: "" },
+        modal: { isError: false, isSuccess: true, message: "" },
       };
 
       const setIsloadingAction = setIsLoadingActionCreator();
@@ -33,7 +33,7 @@ describe("Given a uiReducer", () => {
         isLoading: true,
         modal: {
           isError: false,
-          isSucess: true,
+          isSuccess: true,
           message: "",
         },
       };
@@ -42,7 +42,7 @@ describe("Given a uiReducer", () => {
         isLoading: false,
         modal: {
           isError: false,
-          isSucess: true,
+          isSuccess: true,
           message: "",
         },
       };
@@ -60,7 +60,7 @@ describe("Given a uiReducer", () => {
         isLoading: false,
         modal: {
           isError: true,
-          isSucess: false,
+          isSuccess: false,
           message: "Delete was successfull",
         },
       };
@@ -75,7 +75,7 @@ describe("Given a uiReducer", () => {
         isLoading: false,
         modal: {
           isError: false,
-          isSucess: true,
+          isSuccess: true,
           message: "Delete was successfull",
         },
       };
@@ -91,14 +91,18 @@ describe("Given a uiReducer", () => {
     test("Then it should hide the modal", () => {
       const uiInitialState: UiState = {
         isLoading: false,
-        modal: { isError: true, isSucess: false, message: "Wrong credentials" },
+        modal: {
+          isError: true,
+          isSuccess: false,
+          message: "Wrong credentials",
+        },
       };
 
       const expectedNewState: UiState = {
         isLoading: false,
         modal: {
           isError: false,
-          isSucess: false,
+          isSuccess: false,
           message: "",
         },
       };

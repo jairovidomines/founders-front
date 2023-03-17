@@ -1,8 +1,4 @@
-import {
-  mockProjectAndroid,
-  mockProjectIos,
-  mockProjects,
-} from "../../../mocks/mocks";
+import { mockProjectAndroid, mockProjectIos } from "../../../mocks/mocks";
 import {
   deleteProjectActionCreator,
   loadProjectsActionCreator,
@@ -31,14 +27,19 @@ describe("Given a projectsReducer reducer", () => {
 
   describe("When it receives a new state and the deleteProject action to delete a project", () => {
     test("Then it should show an update list without the project deleted", () => {
-      const deleteProjectAction =
-        deleteProjectActionCreator(mockProjectAndroid);
+      const initialState: ProjectsData = {
+        projects: [mockProjectAndroid, mockProjectIos],
+      };
 
-      const expectedProjects: ProjectsData = mockProjects;
+      const deleteProjectAction = deleteProjectActionCreator(
+        mockProjectAndroid.id
+      );
 
-      const newProjects = projectsReducer(mockProjects, deleteProjectAction);
+      const result = projectsReducer(initialState, deleteProjectAction);
 
-      expect(newProjects).toStrictEqual(expectedProjects);
+      const updatedProjectList = { projects: [mockProjectIos] };
+
+      expect(updatedProjectList).toStrictEqual(result);
     });
   });
 });
