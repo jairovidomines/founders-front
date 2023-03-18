@@ -18,6 +18,7 @@ const getProjectsEndpoint = "/";
 const getUserProjectsEndpoint = "/my-projects";
 const deleteProjectEndpoint = "/delete";
 const deleteProjectId = "/";
+const createProjectEndpoint = "/create";
 
 const useProjects = () => {
   const dispatch = useAppDispatch();
@@ -105,7 +106,37 @@ const useProjects = () => {
     }
   };
 
-  return { getProjects, getUserProjects, deleteProject };
+  const createProject = useCallback(async () => {
+    try {
+      dispatch(setIsLoadingActionCreator());
+
+      const response = await fetch(
+        `${apiUrl}${pathProjects}${createProjectEndpoint}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      if (!response.ok) {
+        const errorMessage = "The project cannot be created";
+
+        throw new Error(errorMessage);
+      }
+
+      dispatch(unsetIsLoadingActionCreator());
+      showSuccessToast("Project was succesfully created");
+    } catch (error: unknown) {
+      const errorMessage = (error as Error).message;
+      dispatch(unsetIsLoadingActionCreator());
+      showErrorToast(errorMessage);
+    }
+  }, [dispatch, token]);
+
+  return { getProjects, getUserProjects, deleteProject, createProject };
 };
 
 export default useProjects;
