@@ -148,7 +148,7 @@ describe("Given a useProjects custom hook", () => {
       server.resetHandlers(...errorHandlers);
     });
 
-    test("Then it should call the showError toas function with the message: 'Project was not deleted, try again'", () => {
+    test("Then it should call the showError toast function with the message: 'Project was not deleted, try again'", () => {
       const errorMessage = "Project was not deleted, try again";
       const errorOptions = {
         position: "top-center",
@@ -173,6 +173,78 @@ describe("Given a useProjects custom hook", () => {
       } = renderHook(() => useProjects(), { wrapper: Wrapper });
 
       await deleteProject(mockProjectAndroid.id);
+
+      expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
+    });
+  });
+
+  describe("When the createProject function is called", () => {
+    test("Then it should call the dispatch", async () => {
+      const {
+        result: {
+          current: { createProject },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await createProject();
+
+      expect(spyDispatch).toHaveBeenCalled();
+    });
+    test("Then it should call the setIsLodingActionCreator dispatch", async () => {
+      const {
+        result: {
+          current: { createProject },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await createProject();
+
+      expect(spyDispatch).toHaveBeenCalledWith(setIsLoadingActionCreator());
+    });
+
+    test("Then it should call de unsetIsLoadingActionCreator dispatch", async () => {
+      const {
+        result: {
+          current: { createProject },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await createProject();
+
+      expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
+    });
+  });
+
+  describe("When the createProject function is called and the response fails", () => {
+    beforeEach(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+
+    test("Then it should call the showError toast function with the message: 'The project cannot be created'", () => {
+      const errorMessage = "The project cannot be created";
+      const errorOptions = {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        theme: "light",
+      };
+
+      showErrorToast(errorMessage);
+
+      expect(toast.error).toHaveBeenCalledWith(errorMessage, errorOptions);
+    });
+
+    test("Then it should call the dispatch with unsetIsLoadingActionCreator", async () => {
+      const {
+        result: {
+          current: { createProject },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await createProject();
 
       expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
     });
