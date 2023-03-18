@@ -9,6 +9,7 @@ const routes = {
   getMyProjects: "/my-projects",
   delete: "/delete",
   findId: "/:id",
+  create: "/create",
 };
 
 export const handlers = [
@@ -32,6 +33,10 @@ export const handlers = [
     `${process.env.REACT_APP_URL_API}${routes.projects}${routes.delete}${routes.findId}`,
     async (req, res, ctx) => res(ctx.status(200), ctx.json(mockProjects))
   ),
+  rest.post(
+    `${process.env.REACT_APP_URL_API}${routes.projects}${routes.create}`,
+    async (req, res, ctx) => res(ctx.status(200), ctx.json(mockProjects))
+  ),
 ];
 
 export const errorHandlers = [
@@ -43,6 +48,10 @@ export const errorHandlers = [
   ),
   rest.get(
     `${process.env.REACT_APP_URL_API}${routes.projects}${routes.getMyProjects}`,
+    async (req, res, ctx) => res(ctx.status(404))
+  ),
+  rest.post(
+    `${process.env.REACT_APP_URL_API}${routes.projects}${routes.create}`,
     async (req, res, ctx) => res(ctx.status(404))
   ),
 ];
