@@ -7,6 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
+import endpoints from "../../routers/types";
 import { useAppSelector } from "../../store/hooks";
 import NavigationStyled from "./NavigationBarStyled";
 
@@ -24,21 +25,25 @@ const NavigationBar = (): JSX.Element => {
               className="fa-solid--active navigation__link"
             />
           </NavLink>
-          <NavLink to={"/my-projects"}>
+          <NavLink to={endpoints.myProjects}>
             <FontAwesomeIcon
               icon={faList}
               className="fa-solid--active navigation__link"
             />
           </NavLink>
-          <FontAwesomeIcon
-            icon={faPlus}
-            className="fa-solid--active navigation__link"
-          />
-          <FontAwesomeIcon
-            icon={faArrowRightFromBracket}
-            className="fa-solid--active navigation__link"
-            onClick={logoutUser}
-          />
+          <NavLink to={endpoints.createProject}>
+            <FontAwesomeIcon
+              icon={faPlus}
+              className="fa-solid--active navigation__link"
+            />
+          </NavLink>
+          <NavLink to={endpoints.login}>
+            <FontAwesomeIcon
+              icon={faArrowRightFromBracket}
+              className="fa-solid--active navigation__link"
+              onClick={logoutUser}
+            />
+          </NavLink>
         </div>
       )}
     </NavigationStyled>

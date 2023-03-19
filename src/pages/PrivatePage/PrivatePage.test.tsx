@@ -5,7 +5,7 @@ import PrivatePage from "./PrivatePage";
 describe("Given a PrivatePage", () => {
   describe("When it is rendered", () => {
     test("Then it should show a header with the text: 'My projects'", () => {
-      const expectText = "My Projects";
+      const expectText = "My projects";
 
       renderWithProviders(<PrivatePage />);
 

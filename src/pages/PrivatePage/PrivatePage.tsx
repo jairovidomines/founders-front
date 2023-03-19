@@ -12,7 +12,7 @@ const PrivatePage = (): JSX.Element => {
 
   return (
     <PrivatePageStyled className="private-page">
-      <h2 className="private-page__title">My Projects</h2>
+      <h1 className="private-page__title">My projects</h1>
       <CardList />
     </PrivatePageStyled>
   );
