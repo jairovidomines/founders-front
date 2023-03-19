@@ -1,10 +1,12 @@
 import { createBrowserRouter, RouteObject } from "react-router-dom";
 import App from "../components/App/App";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
+import CreatePage from "../pages/CreatePage/CreatePage";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import PrivatePage from "../pages/PrivatePage/PrivatePage";
+import endpoints from "./types";
 
 const routes: RouteObject[] = [
   {
@@ -13,11 +15,12 @@ const routes: RouteObject[] = [
     errorElement: <NotFoundPage />,
     children: [
       { path: "/", element: <ProtectedRoute element={<HomePage />} /> },
-      { path: "/login", element: <LoginPage /> },
+      { path: endpoints.login, element: <LoginPage /> },
       {
-        path: "/my-projects",
+        path: endpoints.myProjects,
         element: <ProtectedRoute element={<PrivatePage />} />,
       },
+      { path: endpoints.createProject, element: <CreatePage /> },
     ],
   },
 ];

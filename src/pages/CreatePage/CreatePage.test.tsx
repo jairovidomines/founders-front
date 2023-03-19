@@ -1,13 +1,13 @@
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../../testUtils/renderWithProviders";
-import PrivatePage from "./PrivatePage";
+import CreatePage from "./CreatePage";
 
-describe("Given a PrivatePage", () => {
+describe("Given a CreatePage", () => {
   describe("When it is rendered", () => {
-    test("Then it should show a header with the text: 'My projects'", () => {
-      const expectText = "My projects";
+    test("Then it should show a header with text: 'Create a project'", () => {
+      const expectText = "Create a project";
 
-      renderWithProviders(<PrivatePage />);
+      renderWithProviders(<CreatePage />);
 
       const result = screen.getByRole("heading", { name: expectText });
 
