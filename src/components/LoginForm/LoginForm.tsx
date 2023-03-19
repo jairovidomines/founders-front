@@ -1,7 +1,7 @@
 import { useState } from "react";
 import useUser from "../../hooks/useUser/useUser";
 import Button from "../Button/Button";
-import FormStyled from "./LoginFormStyled";
+import LoginFormStyled from "./LoginFormStyled";
 
 const LoginForm = (): JSX.Element => {
   const { loginUser } = useUser();
@@ -27,10 +27,14 @@ const LoginForm = (): JSX.Element => {
   };
 
   return (
-    <FormStyled className="form" autoComplete="off" onSubmit={onSubmitHandler}>
+    <LoginFormStyled
+      className="login-form"
+      autoComplete="off"
+      onSubmit={onSubmitHandler}
+    >
       <svg
         data-testid="founders_logo"
-        className="form__logo"
+        className="login-form__logo"
         width="141"
         height="27"
         viewBox="0 0 141 27"
@@ -60,32 +64,32 @@ const LoginForm = (): JSX.Element => {
         </defs>
       </svg>
 
-      <label className="form__label">
+      <label className="login-form__label">
         Username
         <input
-          className="form__input"
+          className="login-form__input"
           type="name"
           id="name"
           placeholder="Username..."
           onChange={handleUsername}
         ></input>
       </label>
-      <label className="form__label">
+      <label className="login-form__label">
         Password
         <input
-          className="form__input"
+          className="login-form__input"
           type="password"
           id="password"
           placeholder="Password..."
           onChange={handlePassword}
         ></input>
       </label>
-      <Button className="form__button" text="Log in" />
-      <div className="user">
-        <span className="user__not-a-member">Not a member? </span>
-        <span className="user__sign-up">Sign up</span>
+      <Button className="login-form__button" text="Log in" />
+      <div className="login-form-user">
+        <span className="login-form-user__not-a-member">Not a member? </span>
+        <span className="login-form-user__sign-up">Sign up</span>
       </div>
-    </FormStyled>
+    </LoginFormStyled>
   );
 };
 
