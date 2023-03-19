@@ -1,18 +1,12 @@
 import styled from "styled-components";
 
-const LoginFormStyled = styled.form`
+const CreateFormStyled = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
 
-  .login-form {
-    &__logo {
-      width: 141px;
-      height: auto;
-      margin: 100px 0;
-    }
-
+  .create-form {
     &__label {
       display: flex;
       flex-direction: column;
@@ -20,7 +14,7 @@ const LoginFormStyled = styled.form`
       gap: 17px;
     }
 
-    &__label:nth-of-type(2) {
+    &__label:nth-of-type(7) {
       margin-bottom: 25px;
     }
 
@@ -33,6 +27,19 @@ const LoginFormStyled = styled.form`
       font-family: ${(props) => props.theme.fonts.primary};
       font-size: 15px;
       font-weight: 200;
+      border: none;
+    }
+
+    &__textarea {
+      min-width: 90vw;
+      height: 39px;
+      background-color: #eee;
+      border-radius: 5px;
+      padding: 10px;
+      font-family: ${(props) => props.theme.fonts.primary};
+      font-size: 15px;
+      font-weight: 200;
+      border: none;
     }
 
     &__button {
@@ -43,16 +50,13 @@ const LoginFormStyled = styled.form`
     }
   }
 
-  .login-form-user {
-    &__not-a-member {
-      font-weight: 400;
-    }
+  .short-description {
+    height: 80px;
+  }
 
-    &__sign-up {
-      font-weight: 600;
-      color: #3f5e46;
-    }
+  .description {
+    height: 140px;
   }
 `;
 
-export default LoginFormStyled;
+export default CreateFormStyled;
