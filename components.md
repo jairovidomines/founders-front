@@ -7,8 +7,6 @@
   - Name
   - Website url
   - Active users
-  - Pricing
-  - Platforms
   - Twitter account
   - Upload logo
   - Short description
@@ -67,8 +65,6 @@
   - Shows an input for the Project's website with label "Website"
   - Shows an input for the Project's active mohlty users with label "Active users"
   - Shows an input for the Project's twitter account with label "Twitter"
-  - Shows an input for the Project's pricing with label "Pricing"
-  - Shows an input for the Project's platforms with label "Platforms"
   - Shows an input for the Project's upload logo with label "Upload logo"
   - Shows an input for the Project's short description with label "Short description"
   - Shows an input for the Project's description with label "Description"
@@ -80,8 +76,6 @@
   - Shows an input for the Project's website with label "Website"
   - Shows an input for the Project's active monthly users with label "Active users"
   - Shows an input for the Project's twitter account with label "Twitter"
-  - Shows an input for the Project's pricing with label "Pricing"
-  - Shows an input for the Project's platforms with label "Platforms"
   - Shows an input for the Project's upload logo with label "Upload logo"
   - Shows an input for the Project's short description with label "Short description"
   - Shows an input for the Project's description with label "Description"

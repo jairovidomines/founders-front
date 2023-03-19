@@ -27,6 +27,12 @@ jest.mock("react-toastify", () => ({
   },
 }));
 
+const mockedUsedNavigate = jest.fn();
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"),
+  useNavigate: () => mockedUsedNavigate,
+}));
+
 afterEach(() => {
   jest.clearAllMocks();
 });
@@ -186,7 +192,7 @@ describe("Given a useProjects custom hook", () => {
         },
       } = renderHook(() => useProjects(), { wrapper: Wrapper });
 
-      await createProject();
+      await createProject(mockProjectAndroid);
 
       expect(spyDispatch).toHaveBeenCalled();
     });
@@ -197,7 +203,7 @@ describe("Given a useProjects custom hook", () => {
         },
       } = renderHook(() => useProjects(), { wrapper: Wrapper });
 
-      await createProject();
+      await createProject(mockProjectAndroid);
 
       expect(spyDispatch).toHaveBeenCalledWith(setIsLoadingActionCreator());
     });
@@ -209,7 +215,7 @@ describe("Given a useProjects custom hook", () => {
         },
       } = renderHook(() => useProjects(), { wrapper: Wrapper });
 
-      await createProject();
+      await createProject(mockProjectAndroid);
 
       expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
     });
@@ -244,7 +250,7 @@ describe("Given a useProjects custom hook", () => {
         },
       } = renderHook(() => useProjects(), { wrapper: Wrapper });
 
-      await createProject();
+      await createProject(mockProjectAndroid);
 
       expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
     });

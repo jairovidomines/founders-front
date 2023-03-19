@@ -1,18 +1,19 @@
-export interface ProjectDataStructure {
+export interface ProjectStructureToBeCreated {
   name: string;
   website: string;
   twitter: string;
-  platforms: string;
   monthlyUsers: string;
   avatar: string;
   shortDescription: string;
   description: string;
-  id: string;
   maker: string;
 }
 
-export interface ProjectsData {
-  projects: ProjectsDataStructure;
+export interface ProjectStructure extends ProjectStructureToBeCreated {
+  id: string;
 }
 
-export type ProjectsDataStructure = ProjectDataStructure[];
+export type ProjectsStructure = ProjectStructure[];
+export interface ProjectsFromApi {
+  projects: ProjectsStructure;
+}

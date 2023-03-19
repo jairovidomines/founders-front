@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProjectsData, ProjectsDataStructure } from "./types";
+import { ProjectsFromApi, ProjectsStructure } from "./types";
 
-const initialState: ProjectsData = { projects: [] };
+const initialState: ProjectsFromApi = { projects: [] };
 
 const projectsSlice = createSlice({
   name: "project",
@@ -9,7 +9,7 @@ const projectsSlice = createSlice({
   reducers: {
     loadProjects: (
       currentProjectState,
-      action: PayloadAction<ProjectsDataStructure>
+      action: PayloadAction<ProjectsStructure>
     ) => ({ ...currentProjectState, projects: action.payload }),
 
     deleteProject: (currentProjectState, action: PayloadAction<string>) => {

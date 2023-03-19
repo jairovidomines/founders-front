@@ -5,7 +5,7 @@ const CreateFormStyled = styled.form`
   flex-direction: column;
   align-items: center;
   gap: 20px;
-
+  padding-bottom: 50px;
   .create-form {
     &__label {
       display: flex;

@@ -1,10 +1,15 @@
 import { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { showErrorToast, showSuccessToast } from "../../modals/modals";
+import endpoints from "../../routers/types";
 import {
   deleteProjectActionCreator,
   loadProjectsActionCreator,
 } from "../../store/features/projectsSlice/projectsSlice";
-import { ProjectsData } from "../../store/features/projectsSlice/types";
+import {
+  ProjectsFromApi,
+  ProjectStructureToBeCreated,
+} from "../../store/features/projectsSlice/types";
 import {
   openModalActionCreator,
   setIsLoadingActionCreator,
@@ -23,6 +28,7 @@ const createProjectEndpoint = "/create";
 const useProjects = () => {
   const dispatch = useAppDispatch();
   const token = useAppSelector((state) => state.user.token);
+  const navigateTo = useNavigate();
 
   const getProjects = useCallback(async () => {
     try {
@@ -35,7 +41,7 @@ const useProjects = () => {
           headers: { "Content-type": "application/json; charset=UTF-8" },
         }
       );
-      const { projects } = (await response.json()) as ProjectsData;
+      const { projects } = (await response.json()) as ProjectsFromApi;
 
       dispatch(unsetIsLoadingActionCreator());
       dispatch(loadProjectsActionCreator(projects));
@@ -58,7 +64,7 @@ const useProjects = () => {
           },
         }
       );
-      const { projects } = (await response.json()) as ProjectsData;
+      const { projects } = (await response.json()) as ProjectsFromApi;
 
       dispatch(unsetIsLoadingActionCreator());
       dispatch(loadProjectsActionCreator(projects));
@@ -106,35 +112,41 @@ const useProjects = () => {
     }
   };
 
-  const createProject = useCallback(async () => {
-    try {
-      dispatch(setIsLoadingActionCreator());
+  const createProject = useCallback(
+    async (maker: ProjectStructureToBeCreated) => {
+      try {
+        dispatch(setIsLoadingActionCreator());
 
-      const response = await fetch(
-        `${apiUrl}${pathProjects}${createProjectEndpoint}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+        const response = await fetch(
+          `${apiUrl}${pathProjects}${createProjectEndpoint}`,
+          {
+            method: "POST",
+            body: JSON.stringify(maker),
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          const errorMessage = "The project cannot be created";
+
+          throw new Error(errorMessage);
         }
-      );
 
-      if (!response.ok) {
-        const errorMessage = "The project cannot be created";
+        dispatch(unsetIsLoadingActionCreator());
+        navigateTo(endpoints.myProjects);
+        showSuccessToast("Project was succesfully created");
+      } catch (error: unknown) {
+        const errorMessage = (error as Error).message;
 
-        throw new Error(errorMessage);
+        dispatch(unsetIsLoadingActionCreator());
+        showErrorToast(errorMessage);
       }
-
-      dispatch(unsetIsLoadingActionCreator());
-      showSuccessToast("Project was succesfully created");
-    } catch (error: unknown) {
-      const errorMessage = (error as Error).message;
-      dispatch(unsetIsLoadingActionCreator());
-      showErrorToast(errorMessage);
-    }
-  }, [dispatch, token]);
+    },
+    [dispatch, navigateTo, token]
+  );
 
   return { getProjects, getUserProjects, deleteProject, createProject };
 };
