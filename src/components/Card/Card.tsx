@@ -1,5 +1,5 @@
 import useProjects from "../../hooks/useProjects/useProjects";
-import { ProjectDataStructure } from "../../store/features/projectsSlice/types";
+import { ProjectStructure } from "../../store/features/projectsSlice/types";
 import { useAppSelector } from "../../store/hooks";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +7,7 @@ import CardStyled from "./CardStyled";
 import Button from "../Button/Button";
 
 interface CardProps {
-  project: ProjectDataStructure;
+  project: ProjectStructure;
 }
 
 const Card = ({

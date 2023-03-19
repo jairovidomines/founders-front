@@ -1,13 +1,12 @@
 import {
-  ProjectDataStructure,
-  ProjectsData,
+  ProjectStructure,
+  ProjectsFromApi,
 } from "../store/features/projectsSlice/types";
 
-export const mockProjectAndroid: ProjectDataStructure = {
+export const mockProjectAndroid: ProjectStructure = {
   name: "Anyone",
   website: "www.anyone.com",
   twitter: "@anyone",
-  platforms: "Android",
   monthlyUsers: "1000",
   avatar: "avatar.webp",
   shortDescription: "This is a short description",
@@ -16,11 +15,10 @@ export const mockProjectAndroid: ProjectDataStructure = {
   maker: "",
 };
 
-export const mockProjectIos: ProjectDataStructure = {
+export const mockProjectIos: ProjectStructure = {
   name: "Anyone",
   website: "www.anyone.com",
   twitter: "@anyone",
-  platforms: "IOS",
   monthlyUsers: "1000",
   avatar: "avatar.webp",
   shortDescription: "This is a short description",
@@ -29,6 +27,6 @@ export const mockProjectIos: ProjectDataStructure = {
   maker: "",
 };
 
-export const mockProjects: ProjectsData = {
+export const mockProjects: ProjectsFromApi = {
   projects: [mockProjectAndroid, mockProjectIos],
 };
