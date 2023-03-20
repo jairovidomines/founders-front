@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ProjectsFromApi, ProjectsStructure } from "./types";
+import { ProjectsFromApi, ProjectsStructure, ProjectStructure } from "./types";
 
 const initialState: ProjectsFromApi = { projects: [] };
 
@@ -19,6 +19,11 @@ const projectsSlice = createSlice({
 
       return { projects: updateProjects };
     },
+
+    getProjectById: (
+      currentProjectState,
+      action: PayloadAction<ProjectStructure>
+    ) => ({ ...currentProjectState, project: action.payload }),
   },
 });
 
@@ -26,4 +31,5 @@ export const projectsReducer = projectsSlice.reducer;
 export const {
   loadProjects: loadProjectsActionCreator,
   deleteProject: deleteProjectActionCreator,
+  getProjectById: getProjectByIdActionCreator,
 } = projectsSlice.actions;
