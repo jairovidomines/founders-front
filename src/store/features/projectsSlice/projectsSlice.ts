@@ -1,24 +1,36 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProjectsFromApi, ProjectsStructure, ProjectStructure } from "./types";
 
-const initialState: ProjectsFromApi = { projects: [] };
+export const initialStateProjects: ProjectsFromApi = {
+  projects: [],
+  project: {
+    name: "",
+    maker: "",
+    avatar: "",
+    description: "",
+    id: "",
+    monthlyUsers: "",
+    shortDescription: "",
+    twitter: "",
+    website: "",
+  },
+};
 
 const projectsSlice = createSlice({
   name: "project",
-  initialState,
+  initialState: initialStateProjects,
   reducers: {
     loadProjects: (
       currentProjectState,
       action: PayloadAction<ProjectsStructure>
     ) => ({ ...currentProjectState, projects: action.payload }),
 
-    deleteProject: (currentProjectState, action: PayloadAction<string>) => {
-      const updateProjects = currentProjectState.projects.filter(
+    deleteProject: (currentProjectState, action: PayloadAction<string>) => ({
+      ...currentProjectState,
+      projects: currentProjectState.projects.filter(
         (project) => project.id !== action.payload
-      );
-
-      return { projects: updateProjects };
-    },
+      ),
+    }),
 
     getProjectById: (
       currentProjectState,

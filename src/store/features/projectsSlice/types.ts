@@ -16,4 +16,5 @@ export interface ProjectStructure extends ProjectStructureToBeCreated {
 export type ProjectsStructure = ProjectStructure[];
 export interface ProjectsFromApi {
   projects: ProjectsStructure;
+  project: ProjectStructure;
 }

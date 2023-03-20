@@ -29,6 +29,17 @@ export const mockProjectIos: ProjectStructure = {
 
 export const mockProjects: ProjectsFromApi = {
   projects: [mockProjectAndroid, mockProjectIos],
+  project: {
+    name: "",
+    maker: "",
+    avatar: "",
+    description: "",
+    id: "",
+    monthlyUsers: "",
+    shortDescription: "",
+    twitter: "",
+    website: "",
+  },
 };
 
 export const mockProjectTobeCreated = {
