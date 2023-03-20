@@ -19,25 +19,25 @@ const NavigationBar = (): JSX.Element => {
     <NavigationStyled>
       {isLogged && (
         <div className="navigation">
-          <NavLink to={"/"}>
+          <NavLink to={"/"} title="home">
             <FontAwesomeIcon
               icon={faHouse}
               className="fa-solid--active navigation__link"
             />
           </NavLink>
-          <NavLink to={endpoints.myProjects}>
+          <NavLink to={endpoints.myProjects} title="my-projects">
             <FontAwesomeIcon
               icon={faList}
               className="fa-solid--active navigation__link"
             />
           </NavLink>
-          <NavLink to={endpoints.createProject}>
+          <NavLink to={endpoints.createProject} title="create-projects">
             <FontAwesomeIcon
               icon={faPlus}
               className="fa-solid--active navigation__link"
             />
           </NavLink>
-          <NavLink to={endpoints.login}>
+          <NavLink to={endpoints.login} title="login">
             <FontAwesomeIcon
               icon={faArrowRightFromBracket}
               className="fa-solid--active navigation__link"
