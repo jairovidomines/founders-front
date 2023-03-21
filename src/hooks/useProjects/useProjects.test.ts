@@ -255,4 +255,52 @@ describe("Given a useProjects custom hook", () => {
       expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
     });
   });
+
+  describe("When the getProjectById function is called", () => {
+    test("Then it should call the dispatch method", async () => {
+      const {
+        result: {
+          current: { getProjectById },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await getProjectById(mockProjectAndroid.id);
+
+      expect(spyDispatch).toHaveBeenCalled();
+    });
+  });
+
+  describe("When the getProjectById function is called and the response fails", () => {
+    beforeEach(() => {
+      server.resetHandlers(...errorHandlers);
+    });
+    test("Then it should call the showError toast function with the message: 'Not possible to show the project'", () => {
+      const errorMessage = "Not possible to show the project";
+      const errorOptions = {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        theme: "light",
+      };
+
+      showErrorToast(errorMessage);
+
+      expect(toast.error).toHaveBeenCalledWith(errorMessage, errorOptions);
+    });
+
+    test("Then it should call the dispatch with unsetIsLoadingActionCreatr", async () => {
+      const {
+        result: {
+          current: { getProjectById },
+        },
+      } = renderHook(() => useProjects(), { wrapper: Wrapper });
+
+      await getProjectById(mockProjectAndroid.id);
+
+      expect(spyDispatch).toHaveBeenCalledWith(unsetIsLoadingActionCreator());
+    });
+  });
 });

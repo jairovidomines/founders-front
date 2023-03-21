@@ -12,7 +12,7 @@ export const mockProjectAndroid: ProjectStructure = {
   shortDescription: "This is a short description",
   description: "This is a description",
   id: "13579",
-  maker: "",
+  maker: "34567",
 };
 
 export const mockProjectIos: ProjectStructure = {
