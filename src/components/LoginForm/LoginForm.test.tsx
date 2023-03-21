@@ -52,81 +52,61 @@ describe("Given a Form component", () => {
       expect(result).toBeInTheDocument();
     });
 
-    test("Then it should show the text: 'Not a member?'", () => {
-      const expectResult = "Not a member?";
+    describe("When the user writes on the 'Username' input", () => {
+      test("Then it changes the value of this input", async () => {
+        const expectUsernameLabel = "Username";
+        const expectResult = "Jairo";
 
-      renderWithProviders(<LoginForm />);
+        renderWithProviders(<LoginForm />);
 
-      const result = screen.getByText(expectResult);
+        const result = screen.getByLabelText(expectUsernameLabel);
 
-      expect(result).toBeInTheDocument();
-    });
+        await act(async () => await userEvent.type(result, expectResult));
 
-    test("Then it should show the text: 'Sign up'", () => {
-      const expectResult = "Sign up";
-
-      renderWithProviders(<LoginForm />);
-
-      const result = screen.getByText(expectResult);
-
-      expect(result).toBeInTheDocument();
-    });
-  });
-
-  describe("When the user writes on the 'Username' input", () => {
-    test("Then it changes the value of this input", async () => {
-      const expectUsernameLabel = "Username";
-      const expectResult = "Jairo";
-
-      renderWithProviders(<LoginForm />);
-
-      const result = screen.getByLabelText(expectUsernameLabel);
-
-      await act(async () => await userEvent.type(result, expectResult));
-
-      expect(result).toHaveValue(expectResult);
-    });
-  });
-
-  describe("When the user writes on the 'Password' input", () => {
-    test("Then it changes the value of this input", async () => {
-      const expectPasswordLabel = "Password";
-      const expectResult = "Jairo1020!";
-
-      renderWithProviders(<LoginForm />);
-
-      const result = screen.getByLabelText(expectPasswordLabel);
-
-      await act(async () => await userEvent.type(result, expectResult));
-
-      expect(result).toHaveValue(expectResult);
-    });
-  });
-
-  describe("When the user submit the form", () => {
-    test("Then the loginUser function should be called", async () => {
-      const expectUsernameLabel = "Username...";
-      const expectPasswordLabel = "Password...";
-      const expectSubmitButton = "Log in";
-
-      const mockUser: UserCredentials = {
-        username: "",
-        password: "",
-      };
-
-      renderWithProviders(<LoginForm />);
-
-      const resultUsername = screen.getByPlaceholderText(expectUsernameLabel);
-      const resultPassword = screen.getByPlaceholderText(expectPasswordLabel);
-      const resultSubmit = screen.getByRole("button", {
-        name: expectSubmitButton,
+        expect(result).toHaveValue(expectResult);
       });
+    });
 
-      fireEvent.change(resultUsername, mockUser.username);
-      fireEvent.change(resultPassword, mockUser.password);
-      fireEvent.click(resultSubmit);
+    describe("When the user writes on the 'Password' input", () => {
+      test("Then it changes the value of this input", async () => {
+        const expectPasswordLabel = "Password";
+        const expectResult = "Jairo1020!";
 
-      expect(mockLoginUser).toHaveBeenCalledWith(mockUser);
+        renderWithProviders(<LoginForm />);
+
+        const result = screen.getByLabelText(expectPasswordLabel);
+
+        await act(async () => await userEvent.type(result, expectResult));
+
+        expect(result).toHaveValue(expectResult);
+      });
+    });
+
+    describe("When the user submit the form", () => {
+      test("Then the loginUser function should be called", async () => {
+        const expectUsernameLabel = "Username...";
+        const expectPasswordLabel = "Password...";
+        const expectSubmitButton = "Log in";
+
+        const mockUser: UserCredentials = {
+          username: "",
+          password: "",
+        };
+
+        renderWithProviders(<LoginForm />);
+
+        const resultUsername = screen.getByPlaceholderText(expectUsernameLabel);
+        const resultPassword = screen.getByPlaceholderText(expectPasswordLabel);
+        const resultSubmit = screen.getByRole("button", {
+          name: expectSubmitButton,
+        });
+
+        fireEvent.change(resultUsername, mockUser.username);
+        fireEvent.change(resultPassword, mockUser.password);
+        fireEvent.click(resultSubmit);
+
+        expect(mockLoginUser).toHaveBeenCalledWith(mockUser);
+      });
     });
   });
 });

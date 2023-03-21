@@ -85,10 +85,6 @@ const LoginForm = (): JSX.Element => {
         ></input>
       </label>
       <Button className="login-form__button" text="Log in" />
-      <div className="login-form-user">
-        <span className="login-form-user__not-a-member">Not a member? </span>
-        <span className="login-form-user__sign-up">Sign up</span>
-      </div>
     </LoginFormStyled>
   );
 };

@@ -41,7 +41,7 @@ h1, h2 {
 
 button {
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
 
   color: #fff;
 }
