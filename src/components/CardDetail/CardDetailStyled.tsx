@@ -61,9 +61,9 @@ const CardDetailStyled = styled.article`
       display: flex;
       justify-content: center;
       &__button {
-        width: 195px;
-        height: 52px;
-        font-size: 18px;
+        width: 150px;
+        height: 40px;
+        font-size: 17px;
         background-color: ${(props) => props.theme.colors.mainColor};
       }
     }
