@@ -46,6 +46,13 @@ button {
   color: #fff;
 }
 
+a,
+a:active,
+a:visited {
+  color: inherit;
+  text-decoration: none;
+}
+
 `;
 
 export default GlobalStyles;
