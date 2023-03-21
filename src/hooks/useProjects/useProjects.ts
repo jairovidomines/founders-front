@@ -4,6 +4,7 @@ import { showErrorToast, showSuccessToast } from "../../modals/modals";
 import endpoints from "../../routers/types";
 import {
   deleteProjectActionCreator,
+  getProjectByIdActionCreator,
   loadProjectsActionCreator,
 } from "../../store/features/projectsSlice/projectsSlice";
 import {
@@ -104,6 +105,7 @@ const useProjects = () => {
 
       dispatch(deleteProjectActionCreator(id));
       dispatch(unsetIsLoadingActionCreator());
+      navigateTo(endpoints.home);
       showSuccessToast("Project was succesfully deleted");
     } catch (error: unknown) {
       const errorMessage = (error as Error).message;
@@ -148,7 +150,46 @@ const useProjects = () => {
     [dispatch, navigateTo, token]
   );
 
-  return { getProjects, getUserProjects, deleteProject, createProject };
+  const getProjectById = useCallback(
+    async (id: string) => {
+      try {
+        dispatch(setIsLoadingActionCreator());
+
+        const response = await fetch(`${apiUrl}${pathProjects}/${id}`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!response.ok) {
+          const errorMessage = "Not possible to show the project";
+
+          throw new Error(errorMessage);
+        }
+
+        const { project } = (await response.json()) as ProjectsFromApi;
+
+        dispatch(getProjectByIdActionCreator(project));
+        dispatch(unsetIsLoadingActionCreator());
+      } catch (error: unknown) {
+        const errorMessage = (error as Error).message;
+
+        dispatch(unsetIsLoadingActionCreator());
+        showErrorToast(errorMessage);
+      }
+    },
+    [dispatch, token]
+  );
+
+  return {
+    getProjects,
+    getUserProjects,
+    deleteProject,
+    createProject,
+    getProjectById,
+  };
 };
 
 export default useProjects;

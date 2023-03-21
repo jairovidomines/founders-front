@@ -3,6 +3,7 @@ import { ProjectStructure } from "../../store/features/projectsSlice/types";
 import { useAppSelector } from "../../store/hooks";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import CardStyled from "./CardStyled";
 import Button from "../Button/Button";
 
@@ -22,30 +23,32 @@ const Card = ({
   );
 
   return (
-    <CardStyled className="card">
-      <img
-        className="card__image"
-        src={avatar}
-        alt={name}
-        width={87}
-        height={87}
-      ></img>
-      <div className="card__content">
-        <h2 className="card__content-name">{name}</h2>
-        <span className="card__content-short-description">
-          {shortDescription}
-        </span>
-      </div>
-      {logguedUser && (
-        <div>
-          <Button
-            ariaLabel={"delete"}
-            icon={deleteIcon}
-            action={() => deleteProject(projectId)}
-          />
+    <Link to={`/detail/${projectId}`}>
+      <CardStyled className="card">
+        <img
+          className="card__image"
+          src={avatar}
+          alt={name}
+          width={87}
+          height={87}
+        ></img>
+        <div className="card__content">
+          <h2 className="card__content-name">{name}</h2>
+          <span className="card__content-short-description">
+            {shortDescription}
+          </span>
         </div>
-      )}
-    </CardStyled>
+        {logguedUser && (
+          <div>
+            <Button
+              ariaLabel={"delete"}
+              icon={deleteIcon}
+              action={() => deleteProject(projectId)}
+            />
+          </div>
+        )}
+      </CardStyled>
+    </Link>
   );
 };
 

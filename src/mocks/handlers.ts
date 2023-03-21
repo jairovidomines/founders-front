@@ -37,6 +37,10 @@ export const handlers = [
     `${process.env.REACT_APP_URL_API}${routes.projects}${routes.create}`,
     async (req, res, ctx) => res(ctx.status(200), ctx.json(mockProjects))
   ),
+  rest.get(
+    `${process.env.REACT_APP_URL_API}${routes.projects}${routes.findId}`,
+    async (req, res, ctx) => res(ctx.status(200), ctx.json(mockProjects))
+  ),
 ];
 
 export const errorHandlers = [
@@ -56,6 +60,10 @@ export const errorHandlers = [
   ),
   rest.post(
     `${process.env.REACT_APP_URL_API}${routes.projects}${routes.create}`,
+    async (req, res, ctx) => res(ctx.status(404))
+  ),
+  rest.get(
+    `${process.env.REACT_APP_URL_API}${routes.projects}${routes.findId}`,
     async (req, res, ctx) => res(ctx.status(404))
   ),
 ];

@@ -16,6 +16,10 @@ const CardStyled = styled.article`
       gap: 14px;
     }
 
+    &__content-short-description {
+      line-height: 1.6;
+    }
+
     &__content-name {
       font-size: 18px;
     }
