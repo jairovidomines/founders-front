@@ -31,25 +31,23 @@ const DetailPage = ({
   const deleteIcon = (
     <FontAwesomeIcon
       icon={faTrash}
-      className="fa-solid--active card-detail__icon"
+      className="fa-solid--active card-intro__icon"
     />
   );
 
   return (
-    <CardDetailStyled className="card-detail">
-      <div className="card-detail__content">
+    <CardDetailStyled className="card">
+      <div className="card-intro">
         <img
-          className="card-detail__image"
+          className="card-intro__image"
           src={avatar}
           alt={name}
           width={87}
           height={87}
         ></img>
-        <div className="card-detail__content-detail">
-          <h1 className="card-detail__name">{name}</h1>
-          <span className="card-detail__short-description">
-            {shortDescription}
-          </span>
+        <div className="card-intro__content-detail">
+          <h1 className="card-intro__name">{name}</h1>
+          <span className="card-intro__description">{shortDescription}</span>
         </div>
         {logguedUser && (
           <div>
@@ -62,7 +60,7 @@ const DetailPage = ({
         )}
       </div>
       <div className="card-detail">
-        <div className="test">
+        <div className="card-detail__container">
           <span className="card-detail__description">{description}</span>
         </div>
         <div className="card-detail__large-content">
@@ -78,12 +76,9 @@ const DetailPage = ({
           </div>
         </div>
       </div>
-      <div className="card-container-button">
+      <div className="card-button">
         <Link to={website} target="_blank">
-          <Button
-            className="card-container-button__button"
-            text="Visit website"
-          />
+          <Button className="card-button__button" text="Visit website" />
         </Link>
       </div>
     </CardDetailStyled>
