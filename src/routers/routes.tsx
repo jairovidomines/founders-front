@@ -2,6 +2,7 @@ import { createBrowserRouter, RouteObject } from "react-router-dom";
 import App from "../components/App/App";
 import ProtectedRoute from "../components/ProtectedRoute/ProtectedRoute";
 import CreatePage from "../pages/CreatePage/CreatePage";
+import { DetailPage } from "../pages/DetailPage/DetailPage";
 import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
@@ -21,6 +22,7 @@ const routes: RouteObject[] = [
         element: <ProtectedRoute element={<PrivatePage />} />,
       },
       { path: endpoints.createProject, element: <CreatePage /> },
+      { path: "/detail/:id", element: <DetailPage /> },
     ],
   },
 ];
