@@ -7,7 +7,7 @@ const CardStyled = styled.article`
 
   .card {
     &__image {
-      border-radius: 5px;
+      border-radius: 50px;
     }
 
     &__content {

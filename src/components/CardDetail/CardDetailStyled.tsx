@@ -11,7 +11,7 @@ const CardDetailStyled = styled.article`
       border-bottom: 0.05px solid #dad8d8;
 
       &__image {
-        border-radius: 5px;
+        border-radius: 50px;
       }
 
       &__content-detail {
