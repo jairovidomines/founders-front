@@ -12,15 +12,18 @@ const NotFoundPageStyled = styled.div`
   background-color: ${(props) => props.theme.colors.backgroundColor};
 
   .notfound__link {
-    width: 195px;
-    height: 52px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 185px;
+    height: 40px;
     text-align: center;
     border: none;
-    border-radius: 5px;
-    font-size: 18px;
+    border-radius: 25px;
+    font-size: 17px;
     background-color: #3f5e46;
     color: #fff;
-    padding-top: 14px;
+    /* padding-top: 14px; */
   }
 `;
 
