@@ -58,7 +58,7 @@ const CreateForm = (): JSX.Element => {
         Website
         <input
           className="create-form__input"
-          placeholder="Website..."
+          placeholder="https://..."
           type="text"
           name="website"
           aria-label="website"
