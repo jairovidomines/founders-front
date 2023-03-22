@@ -29,8 +29,8 @@ const Card = ({
           className="card__image"
           src={avatar}
           alt={name}
-          width={80}
-          height={80}
+          width={75}
+          height={75}
         ></img>
         <div className="card__content">
           <h2 className="card__content-name">{name}</h2>
