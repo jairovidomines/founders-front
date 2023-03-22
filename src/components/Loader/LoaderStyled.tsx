@@ -6,7 +6,7 @@ const LoaderStyled = styled.div`
   align-items: center;
   min-width: auto;
   height: 100%;
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   bottom: 0;

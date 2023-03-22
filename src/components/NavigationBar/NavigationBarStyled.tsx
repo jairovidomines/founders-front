@@ -11,6 +11,47 @@ const NavigationStyled = styled.nav`
     align-items: center;
     background-color: ${(props) =>
       props.theme.colors.backgroundColorNavigationBar};
+    opacity: 90%;
+
+    &-home {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      &__text {
+        font-size: 9px;
+      }
+    }
+
+    &-my-projects {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      &__text {
+        font-size: 9px;
+      }
+    }
+
+    &-create {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      &__text {
+        font-size: 9px;
+      }
+    }
+
+    &-logout {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+
+      &__text {
+        font-size: 9px;
+      }
+    }
   }
 
   .svg-inline--fa {

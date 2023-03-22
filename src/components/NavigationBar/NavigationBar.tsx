@@ -20,29 +20,41 @@ const NavigationBar = (): JSX.Element => {
       {isLogged && (
         <div className="navigation">
           <NavLink to={"/"} title="home">
-            <FontAwesomeIcon
-              icon={faHouse}
-              className="fa-solid--active navigation__link"
-            />
+            <div className="navigation-home">
+              <FontAwesomeIcon
+                icon={faHouse}
+                className="fa-solid--active navigation__link"
+              />
+              <span className="navigation-home__text">Home</span>
+            </div>
           </NavLink>
           <NavLink to={endpoints.myProjects} title="my-projects">
-            <FontAwesomeIcon
-              icon={faList}
-              className="fa-solid--active navigation__link"
-            />
+            <div className="navigation-my-projects">
+              <FontAwesomeIcon
+                icon={faList}
+                className="fa-solid--active navigation__link"
+              />
+              <span className="navigation-my-projects__text">My projects</span>
+            </div>
           </NavLink>
           <NavLink to={endpoints.createProject} title="create-projects">
-            <FontAwesomeIcon
-              icon={faPlus}
-              className="fa-solid--active navigation__link"
-            />
+            <div className="navigation-create">
+              <FontAwesomeIcon
+                icon={faPlus}
+                className="fa-solid--active navigation__link"
+              />
+              <span className="navigation-create__text">Create</span>
+            </div>
           </NavLink>
           <NavLink to={endpoints.login} title="login">
-            <FontAwesomeIcon
-              icon={faArrowRightFromBracket}
-              className="fa-solid--active navigation__link"
-              onClick={logoutUser}
-            />
+            <div className="navigation-logout">
+              <FontAwesomeIcon
+                icon={faArrowRightFromBracket}
+                className="fa-solid--active navigation__link"
+                onClick={logoutUser}
+              />
+              <span className="navigation-logout__text">Log out</span>
+            </div>
           </NavLink>
         </div>
       )}

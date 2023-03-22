@@ -42,8 +42,8 @@ const DetailPage = ({
           className="card-intro__image"
           src={avatar}
           alt={name}
-          width={87}
-          height={87}
+          width={85}
+          height={85}
         ></img>
         <div className="card-intro__content-detail">
           <h1 className="card-intro__name">{name}</h1>
