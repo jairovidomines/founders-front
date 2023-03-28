@@ -4,6 +4,7 @@ interface Routes {
   myProjects: string;
   createProject: string;
   detail: string;
+  filter: string;
 }
 
 const endpoints: Routes = {
@@ -12,6 +13,7 @@ const endpoints: Routes = {
   myProjects: "/my-projects",
   createProject: "/create",
   detail: "/detail",
+  filter: "/:filter",
 };
 
 export default endpoints;

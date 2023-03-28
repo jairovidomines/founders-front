@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { showErrorToast, showSuccessToast } from "../../modals/modals";
-import endpoints from "../../routers/types";
+import endpoints from "../../routers/paths";
 import {
   deleteProjectActionCreator,
   getProjectByIdActionCreator,
@@ -25,33 +25,42 @@ const getUserProjectsEndpoint = "/my-projects";
 const deleteProjectEndpoint = "/delete";
 const deleteProjectId = "/";
 const createProjectEndpoint = "/create";
+const addFilter = "/:filter";
 
 const useProjects = () => {
   const dispatch = useAppDispatch();
   const token = useAppSelector((state) => state.user.token);
   const navigateTo = useNavigate();
 
-  const getProjects = useCallback(async () => {
-    try {
-      dispatch(setIsLoadingActionCreator());
+  const getProjects = useCallback(
+    async (filter?: string) => {
+      try {
+        dispatch(setIsLoadingActionCreator());
 
-      const response = await fetch(
-        `${apiUrl}${pathProjects}${getProjectsEndpoint}`,
-        {
+        let url;
+
+        if (filter) {
+          url = `${apiUrl}${pathProjects}${getProjectsEndpoint}${addFilter}`;
+        } else {
+          url = `${apiUrl}${pathProjects}${getProjectsEndpoint}`;
+        }
+
+        const response = await fetch(url, {
           method: "GET",
           headers: { "Content-type": "application/json; charset=UTF-8" },
-        }
-      );
-      const { projects } = (await response.json()) as ProjectsFromApi;
+        });
+        const { projects } = (await response.json()) as ProjectsFromApi;
 
-      dispatch(unsetIsLoadingActionCreator());
-      dispatch(loadProjectsActionCreator(projects));
-    } catch (error) {
-      dispatch(unsetIsLoadingActionCreator());
+        dispatch(unsetIsLoadingActionCreator());
+        dispatch(loadProjectsActionCreator(projects));
+      } catch (error) {
+        dispatch(unsetIsLoadingActionCreator());
 
-      return (error as Error).message;
-    }
-  }, [dispatch]);
+        return (error as Error).message;
+      }
+    },
+    [dispatch]
+  );
 
   const getUserProjects = useCallback(async () => {
     try {

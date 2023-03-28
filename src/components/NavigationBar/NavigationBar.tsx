@@ -7,7 +7,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import useUser from "../../hooks/useUser/useUser";
-import endpoints from "../../routers/types";
+import endpoints from "../../routers/paths";
 import { useAppSelector } from "../../store/hooks";
 import NavigationStyled from "./NavigationBarStyled";
 
