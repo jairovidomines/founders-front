@@ -13,11 +13,13 @@ describe("Given a uiReducer", () => {
       const initialUiState: UiState = {
         modal: { isError: false, isSuccess: true, message: "" },
         isLoading: false,
+        filter: "",
       };
 
       const expectedUiState: UiState = {
         isLoading: true,
         modal: { isError: false, isSuccess: true, message: "" },
+        filter: "",
       };
 
       const setIsloadingAction = setIsLoadingActionCreator();
@@ -36,6 +38,7 @@ describe("Given a uiReducer", () => {
           isSuccess: true,
           message: "",
         },
+        filter: "",
       };
 
       const expectedUiState: UiState = {
@@ -45,6 +48,7 @@ describe("Given a uiReducer", () => {
           isSuccess: true,
           message: "",
         },
+        filter: "",
       };
 
       const unsetIsLoadingAction = unsetIsLoadingActionCreator();
@@ -63,6 +67,7 @@ describe("Given a uiReducer", () => {
           isSuccess: false,
           message: "Delete was successfull",
         },
+        filter: "",
       };
 
       const modalPayload: ModalPayload = {
@@ -78,6 +83,7 @@ describe("Given a uiReducer", () => {
           isSuccess: true,
           message: "Delete was successfull",
         },
+        filter: "",
       };
 
       const openModalAction = openModalActionCreator(modalPayload);
@@ -96,6 +102,7 @@ describe("Given a uiReducer", () => {
           isSuccess: false,
           message: "Wrong credentials",
         },
+        filter: "",
       };
 
       const expectedNewState: UiState = {
@@ -105,6 +112,7 @@ describe("Given a uiReducer", () => {
           isSuccess: false,
           message: "",
         },
+        filter: "",
       };
 
       const closeModalAction = closeModalActionCreator();

@@ -4,6 +4,7 @@ import { ModalPayload, UiState } from "./types";
 export const initialState: UiState = {
   isLoading: false,
   modal: { isError: false, message: "", isSuccess: false },
+  filter: "",
 };
 
 const uiSlice = createSlice({
@@ -40,6 +41,11 @@ const uiSlice = createSlice({
         isSuccess: false,
       },
     }),
+
+    addFilter: (currentState, action: PayloadAction<string>): UiState => ({
+      ...currentState,
+      filter: action.payload,
+    }),
   },
 });
 
@@ -50,4 +56,5 @@ export const {
   unsetIsLoading: unsetIsLoadingActionCreator,
   closeModal: closeModalActionCreator,
   openModal: openModalActionCreator,
+  addFilter: addFilterActionCreator,
 } = uiSlice.actions;
