@@ -28,6 +28,7 @@ describe("Given a Layout component", () => {
         ui: {
           isLoading: true,
           modal: { message: "", isError: true, isSuccess: false },
+          filter: "",
         },
       });
 
