@@ -7,7 +7,7 @@ import HomePage from "../pages/HomePage/HomePage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 import PrivatePage from "../pages/PrivatePage/PrivatePage";
-import endpoints from "./types";
+import endpoints from "./paths";
 
 const routes: RouteObject[] = [
   {
