@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import CardList from "../../components/CardList/CardList";
+import Filter from "../../components/Filter/Filter";
 import useProjects from "../../hooks/useProjects/useProjects";
 
 const HomePage = (): JSX.Element => {
@@ -10,9 +11,10 @@ const HomePage = (): JSX.Element => {
   }, [getProjects]);
 
   return (
-    <div>
+    <>
+      <Filter />
       <CardList />
-    </div>
+    </>
   );
 };
 
