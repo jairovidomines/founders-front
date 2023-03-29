@@ -12,6 +12,8 @@ const routes = {
   create: "/create",
 };
 
+const filter = "0-25.000";
+
 export const handlers = [
   rest.post(
     `${process.env.REACT_APP_URL_API}${routes.user}${routes.login}`,
@@ -21,6 +23,11 @@ export const handlers = [
 
   rest.get(
     `${process.env.REACT_APP_URL_API}${routes.projects}${routes.getProjects}`,
+    async (req, res, ctx) => res(ctx.status(200), ctx.json(mockProjects))
+  ),
+
+  rest.get(
+    `${process.env.REACT_APP_URL_API}${routes.projects}${routes.getProjects}/${filter}`,
     async (req, res, ctx) => res(ctx.status(200), ctx.json(mockProjects))
   ),
 

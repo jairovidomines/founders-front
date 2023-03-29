@@ -48,7 +48,7 @@ describe("Given a useProjects custom hook", () => {
         },
       } = renderHook(() => useProjects(), { wrapper: Wrapper });
 
-      await getProjects();
+      await getProjects("");
 
       expect(spyDispatch).toHaveBeenCalledWith(
         loadProjectsActionCreator(mockProjects.projects)
